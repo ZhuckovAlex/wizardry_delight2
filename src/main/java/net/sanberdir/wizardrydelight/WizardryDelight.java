@@ -52,12 +52,14 @@ import net.sanberdir.wizardrydelight.common.blocks.ModEntitiesBlock;
 import net.sanberdir.wizardrydelight.common.blocks.customBlocks.entity_blocks.AppleSign;
 import net.sanberdir.wizardrydelight.common.blocks.customBlocks.entity_blocks.AppleWallSign;
 import net.sanberdir.wizardrydelight.common.entity.ModBlockEntities;
+import net.sanberdir.wizardrydelight.common.entity.ModEntities;
 import net.sanberdir.wizardrydelight.common.entity.boat.EntityTypeInitializer;
 import net.sanberdir.wizardrydelight.common.entity.boat.ModBoatRenderer;
 import net.sanberdir.wizardrydelight.common.entity.boat.ModEntityData;
 import net.sanberdir.wizardrydelight.common.entity.chest_boat.ModChestBoatRenderer;
 import net.sanberdir.wizardrydelight.common.entity.entity_block.WDBlockEntities;
 import net.sanberdir.wizardrydelight.common.particle.ModParticles;
+import net.sanberdir.wizardrydelight.common.sounds.CustomSoundEvents;
 import net.sanberdir.wizardrydelight.common.world.feature.ModConfiguredFeatures;
 import net.sanberdir.wizardrydelight.common.world.feature.ModPlacedFeatures;
 import org.slf4j.Logger;
@@ -98,8 +100,10 @@ public class WizardryDelight
         InitBlocksWD.register(modEventBus);
         ModConfiguredFeatures.register(modEventBus);
         ModPlacedFeatures.register(modEventBus);
+        ModEntities.register(modEventBus);
         WDBlockEntities.register(modEventBus);
         ModParticles.register(modEventBus);
+        CustomSoundEvents.register(modEventBus);
         ClientOnlyRegistrar clientOnlyRegistrar = new ClientOnlyRegistrar(modEventBus);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

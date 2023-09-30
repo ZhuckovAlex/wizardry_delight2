@@ -13,18 +13,19 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraftforge.registries.RegistryObject;
 import net.sanberdir.wizardrydelight.WizardryDelight;
-import net.sanberdir.wizardrydelight.common.Items.customItem.RingSupply;
+import net.sanberdir.wizardrydelight.common.Items.customItem.*;
 import net.sanberdir.wizardrydelight.common.blocks.InitBlocksWD;
 import net.sanberdir.wizardrydelight.client.ModCreativeTab;
-import net.sanberdir.wizardrydelight.common.Items.customItem.AnimateItem;
-import net.sanberdir.wizardrydelight.common.Items.customItem.BurnFences;
 
 
 public class InitItemsWD {
 
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, WizardryDelight.MOD_ID);
-
+    public static final RegistryObject<Item> STAR_BALL = ITEMS.register("star_ball",
+            () -> new StarBallItem(new Item.Properties()));
+    public static final RegistryObject<Item> ROBIN_STICK = ITEMS.register("robin_stick",
+            () -> new StarBallItem(new Item.Properties().durability(70).fireResistant().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> POISON_BERRY = ITEMS.register("poison_berry",
             () -> new ItemNameBlockItem(InitBlocksWD.POISON_BERRY.get(),(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.5f).alwaysEat().fast()
                     .effect(new MobEffectInstance(MobEffects.POISON, 80, 0), 1F)
@@ -105,6 +106,56 @@ public class InitItemsWD {
                     .build())));
     public static final RegistryObject<Item> ROSE_OF_THE_MURDERER = ITEMS.register("rose_of_the_murderer",
             () -> new ItemNameBlockItem(InitBlocksWD.ROSE_OF_THE_MURDERER.get(),(new Item.Properties().tab(ModCreativeTab.BUSHES).fireResistant())));
+    public static final RegistryObject<Item>  RAW_BEAR_MEET = ITEMS.register("raw_bear_meat",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f)
+                    .effect(new MobEffectInstance(MobEffects.CONFUSION, 80, 0), 0.2F)
+                    .effect(new MobEffectInstance(MobEffects.POISON, 80, 0), 0.02F)
+                    .build())));
+    public static final RegistryObject<Item>  COCKED_BEAR_MEET = ITEMS.register("cocked_bear_meat",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationMod(0.81f)
+                            .build())));
+    public static final RegistryObject<Item>  RAW_GOATS_MEET = ITEMS.register("raw_goats_meat",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f)
+                    .effect(new MobEffectInstance(MobEffects.CONFUSION, 80, 0), 0.2F)
+                    .effect(new MobEffectInstance(MobEffects.POISON, 80, 0), 0.02F)
+                    .build())));
+
+    public static final RegistryObject<Item>  COCKED_GOATS_MEET = ITEMS.register("cocked_goats_meat",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationMod(0.8f)
+                            .build())));
+    public static final RegistryObject<Item>  RAW_HORSE = ITEMS.register("raw_horse",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f)
+                    .effect(new MobEffectInstance(MobEffects.CONFUSION, 80, 0), 0.2F)
+                    .build())));
+    public static final RegistryObject<Item>  COCKED_HORSE = ITEMS.register("cocked_horse",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationMod(0.81f)
+                            .build())));
+    public static final RegistryObject<Item> JAR = ITEMS.register("jar",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+    public static final RegistryObject<Item>  YADOGA_JAM = ITEMS.register("yadoga_jam",
+            () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(6).saturationMod(0.8f)
+                    .effect(new MobEffectInstance(MobEffects.POISON, 100, 0), 1F)
+                    .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 800, 0), 1F)
+                    .effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0), 1F)
+                    .build())));
+    public static final RegistryObject<Item>  FREEZE_JAM = ITEMS.register("freeze_jam",
+            () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(6).saturationMod(0.5f)
+                    .effect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 0), 1F)
+                    .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 3600, 0), 1F)
+                    .build())));
+    public static final RegistryObject<Item>  CHARNIKA_JAM = ITEMS.register("charnika_jam",
+            () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(5).saturationMod(4f)
+                    .effect(new MobEffectInstance(MobEffects.LUCK, 6000, 1), 0.05f)
+                    .effect(new MobEffectInstance(MobEffects.DIG_SPEED, 3600, 0), 0.7f)
+                    .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3600, 0), 0.4f)
+                    .effect(new MobEffectInstance(MobEffects.BLINDNESS, 800, 0), 0.2f)
+
+                    .build())));
+    public static final RegistryObject<Item> KRUTNEVY_BREAD = ITEMS.register("krutnevy_bread",
+            () -> new KrutnevyBread(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(8).saturationMod(0.5F).build())));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
