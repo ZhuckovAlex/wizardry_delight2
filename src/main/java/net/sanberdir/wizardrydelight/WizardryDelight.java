@@ -1,35 +1,57 @@
 package net.sanberdir.wizardrydelight;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.entity.ArmorStandRenderer;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
+import net.minecraftforge.registries.RegistryObject;
 import net.sanberdir.wizardrydelight.client.ClientOnlyRegistrar;
 import net.sanberdir.wizardrydelight.client.ModCreativeTab;
 import net.sanberdir.wizardrydelight.common.Items.InitItemsWD;
 import net.sanberdir.wizardrydelight.common.Items.customItem.AppleBoat;
 import net.sanberdir.wizardrydelight.common.Items.customItem.AppleChestBoat;
 import net.sanberdir.wizardrydelight.common.ModWoodType;
+import net.sanberdir.wizardrydelight.common.armor.ModArmorMaterials;
+import net.sanberdir.wizardrydelight.common.armor.ModElytra;
+import net.sanberdir.wizardrydelight.common.armor.elytra.DragoliteElytraArmorStandLayer;
+import net.sanberdir.wizardrydelight.common.armor.elytra.DragoliteElytraLayer;
 import net.sanberdir.wizardrydelight.common.blocks.InitBlocksWD;
+import net.sanberdir.wizardrydelight.common.blocks.ModEntitiesBlock;
+import net.sanberdir.wizardrydelight.common.blocks.customBlocks.entity_blocks.AppleSign;
+import net.sanberdir.wizardrydelight.common.blocks.customBlocks.entity_blocks.AppleWallSign;
+import net.sanberdir.wizardrydelight.common.entity.ModBlockEntities;
 import net.sanberdir.wizardrydelight.common.entity.boat.EntityTypeInitializer;
 import net.sanberdir.wizardrydelight.common.entity.boat.ModBoatRenderer;
 import net.sanberdir.wizardrydelight.common.entity.boat.ModEntityData;
@@ -60,14 +82,14 @@ public class WizardryDelight
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
     // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
+    public static final RegistryObject<Item> MAG_ELITRA =  ITEMS.register("mag_elitra", () ->new ModElytra(ModArmorMaterials.ELITRA, EquipmentSlot.CHEST, new Item.Properties().durability(1200).tab(ModCreativeTab.BUSHES).fireResistant()));
 
    public WizardryDelight()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
+        if(FMLEnvironment.dist.isClient()) modEventBus.addListener(this::registerElytraLayer);
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
@@ -81,6 +103,7 @@ public class WizardryDelight
         ClientOnlyRegistrar clientOnlyRegistrar = new ClientOnlyRegistrar(modEventBus);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> clientOnlyRegistrar::registerClientOnlyEvents);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -123,14 +146,17 @@ public class WizardryDelight
         @SubscribeEvent
         public static void onEntityRendererRegistry(final EntityRenderersEvent.RegisterRenderers registerEntityEvent) {
             registerEntityEvent.registerEntityRenderer(ModEntityData.MOD_BOAT_DATA, ModBoatRenderer::new);
-
+            registerEntityEvent.registerBlockEntityRenderer(ModBlockEntities.SIGN_ENTITY_TYPE, SignRenderer::new);
             registerEntityEvent.registerEntityRenderer(ModEntityData.MOD_CHEST_BOAT_DATA, ModChestBoatRenderer::new);
 
 
         }
+
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            ItemProperties.register(WizardryDelight.MAG_ELITRA.get(), new ResourceLocation(MOD_ID, "broken"),
+                    (stack, arg1, arg2, arg3) -> ModElytra.isUseable(stack) ? 0 : 1);
             event.enqueueWork(() -> {
                 ComposterBlock.COMPOSTABLES.put(InitItemsWD.COASTAL_STEEP_FLOWER.get(), 0.2f);
                 ComposterBlock.COMPOSTABLES.put(InitItemsWD.COASTAL_STEEP_FIBERS.get(), 0.2f);
@@ -149,7 +175,7 @@ public class WizardryDelight
         @SubscribeEvent
         public static void onTileEntityRegistry(final RegisterEvent registerEvent) {
             registerEvent.register(ForgeRegistries.Keys.BLOCK_ENTITY_TYPES, registrar -> {
-
+                registrar.register(new ResourceLocation(MOD_ID, "mod_sign_entity"), ModBlockEntities.SIGN_ENTITY_TYPE);
 
 
 
@@ -158,7 +184,8 @@ public class WizardryDelight
         @SubscribeEvent
         public static void onBlocksRegistry(final RegisterEvent registryEvent) {
             registryEvent.register(ForgeRegistries.Keys.BLOCKS, registrar -> {
-
+                registrar.register(new ResourceLocation(MOD_ID, "apple_sign"), new AppleSign());
+                registrar.register(new ResourceLocation(MOD_ID, "apple_wall_sign"), new AppleWallSign());
             });
         }
 
@@ -167,6 +194,7 @@ public class WizardryDelight
             registerEvent.register(ForgeRegistries.Keys.ITEMS, registrar -> {
                 registrar.register(new ResourceLocation(WizardryDelight.MOD_ID, "apple_boat"), new AppleBoat());
                 registrar.register(new ResourceLocation(WizardryDelight.MOD_ID, "apple_chest_boat"), new AppleChestBoat());
+                registrar.register(new ResourceLocation(WizardryDelight.MOD_ID, "apple_sign"), new SignItem(new Item.Properties().tab(ModCreativeTab.BUSHES), ModEntitiesBlock.APPLE_SIGN, ModEntitiesBlock.APPLE_WALL_SIGN));
             });
         }
         @SubscribeEvent
@@ -181,7 +209,23 @@ public class WizardryDelight
 
 
     }
+    @OnlyIn(Dist.CLIENT)
+    private void registerElytraLayer(EntityRenderersEvent event) {
+        if(event instanceof EntityRenderersEvent.AddLayers addLayersEvent){
+            EntityModelSet entityModels = addLayersEvent.getEntityModels();
+            addLayersEvent.getSkins().forEach(s -> {
+                LivingEntityRenderer<? extends Player, ? extends EntityModel<? extends Player>> livingEntityRenderer = addLayersEvent.getSkin(s);
+                if(livingEntityRenderer instanceof PlayerRenderer playerRenderer){
+                    playerRenderer.addLayer(new DragoliteElytraLayer(playerRenderer, entityModels));
+                }
+            });
+            LivingEntityRenderer<ArmorStand, ? extends EntityModel<ArmorStand>> livingEntityRenderer = addLayersEvent.getRenderer(EntityType.ARMOR_STAND);
+            if(livingEntityRenderer instanceof ArmorStandRenderer armorStandRenderer){
+                armorStandRenderer.addLayer(new DragoliteElytraArmorStandLayer(armorStandRenderer, entityModels));
+            }
 
+        }
+    }
 
 
 }

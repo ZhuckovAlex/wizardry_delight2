@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.sanberdir.wizardrydelight.WizardryDelight;
 import net.sanberdir.wizardrydelight.common.ModWoodType;
+import net.sanberdir.wizardrydelight.common.entity.ModBlockEntities;
 import net.sanberdir.wizardrydelight.common.entity.boat.ModBoatRenderer;
 import net.sanberdir.wizardrydelight.common.entity.boat.ModEntityData;
 import net.sanberdir.wizardrydelight.common.entity.chest_boat.ModChestBoatRenderer;
@@ -52,42 +53,42 @@ public class ClientOnlyRegistrar {
 
     @Mod.EventBusSubscriber(modid = WizardryDelight.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientRegistryEvents {
-//        @SubscribeEvent
-//        public static <T extends LivingEntity, M extends HumanoidModel<T>> void onEntityRendererRegistry(final EntityRenderersEvent.AddLayers registerAddedLayerEvent) {
-//            PlayerRenderer playerSkinRenderer = registerAddedLayerEvent.getSkin("default");
-//
-//            addLayerToEntityRenderer(playerSkinRenderer, registerAddedLayerEvent.getEntityModels());
-//
-//            for (Map.Entry<EntityType<?>, EntityRenderer<?>> entry : Minecraft.getInstance().getEntityRenderDispatcher().renderers.entrySet()) {
-//                EntityRenderer<?> renderer = entry.getValue();
-//                if (renderer instanceof LivingEntityRenderer) {
-//                    LivingEntityRenderer<LivingEntity, HumanoidModel<LivingEntity>> livingEntityRenderer = (LivingEntityRenderer<LivingEntity, HumanoidModel<LivingEntity>>) renderer;
-//
-//                    addLayerToEntityRenderer(livingEntityRenderer, registerAddedLayerEvent.getEntityModels());
-//                }
-//            }
-//        }
-//        private static <T extends LivingEntity, M extends HumanoidModel<T>> void addLayerToEntityRenderer(LivingEntityRenderer<T, M> renderer, EntityModelSet modelSet) {
-//            RenderLayer<T, M> bipedArmorLayer = null;
-//            for (RenderLayer<T, M> layerRenderer : renderer.layers) {
-//                if (layerRenderer != null) {
-//                    if (layerRenderer.getClass() == HumanoidArmorLayer.class) {
-//                        bipedArmorLayer = layerRenderer;
-//                        break;
-//                    }
-//                }
-//            }
-//
-//            if (bipedArmorLayer != null) {
-//
-//            }
-//        }
+        @SubscribeEvent
+        public static <T extends LivingEntity, M extends HumanoidModel<T>> void onEntityRendererRegistry(final EntityRenderersEvent.AddLayers registerAddedLayerEvent) {
+            PlayerRenderer playerSkinRenderer = registerAddedLayerEvent.getSkin("default");
+
+            addLayerToEntityRenderer(playerSkinRenderer, registerAddedLayerEvent.getEntityModels());
+
+            for (Map.Entry<EntityType<?>, EntityRenderer<?>> entry : Minecraft.getInstance().getEntityRenderDispatcher().renderers.entrySet()) {
+                EntityRenderer<?> renderer = entry.getValue();
+                if (renderer instanceof LivingEntityRenderer) {
+                    LivingEntityRenderer<LivingEntity, HumanoidModel<LivingEntity>> livingEntityRenderer = (LivingEntityRenderer<LivingEntity, HumanoidModel<LivingEntity>>) renderer;
+
+                    addLayerToEntityRenderer(livingEntityRenderer, registerAddedLayerEvent.getEntityModels());
+                }
+            }
+        }
+        private static <T extends LivingEntity, M extends HumanoidModel<T>> void addLayerToEntityRenderer(LivingEntityRenderer<T, M> renderer, EntityModelSet modelSet) {
+            RenderLayer<T, M> bipedArmorLayer = null;
+            for (RenderLayer<T, M> layerRenderer : renderer.layers) {
+                if (layerRenderer != null) {
+                    if (layerRenderer.getClass() == HumanoidArmorLayer.class) {
+                        bipedArmorLayer = layerRenderer;
+                        break;
+                    }
+                }
+            }
+
+            if (bipedArmorLayer != null) {
+
+            }
+        }
 
         @SubscribeEvent
         public static void onEntityRendererRegistry(final EntityRenderersEvent.RegisterRenderers registerEntityEvent) {
             registerEntityEvent.registerEntityRenderer(ModEntityData.MOD_BOAT_DATA, ModBoatRenderer::new);
 
-
+            registerEntityEvent.registerBlockEntityRenderer(ModBlockEntities.SIGN_ENTITY_TYPE, SignRenderer::new);
             registerEntityEvent.registerEntityRenderer(ModEntityData.MOD_CHEST_BOAT_DATA, ModChestBoatRenderer::new);
 
 
