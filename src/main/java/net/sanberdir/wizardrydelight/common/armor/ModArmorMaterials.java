@@ -7,10 +7,15 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.sanberdir.wizardrydelight.WizardryDelight;
+import net.sanberdir.wizardrydelight.common.Items.InitItemsWD;
 
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
+    HAT("hat", 28, new int[]{2, 5, 8, 2}, 30, SoundEvents.ARMOR_EQUIP_LEATHER,
+            0.0F, 0.0F, () -> Ingredient.of(InitItemsWD.HAT_HELMET.get())),
+    HAT_CLEAR("hat_clear", 28, new int[]{2, 5, 8, 2}, 30, SoundEvents.ARMOR_EQUIP_LEATHER,
+            0.0F, 0.0F, () -> Ingredient.of(InitItemsWD.HAT_HELMET_CLEAR.get())),
     ELITRA("elitra", 28, new int[]{3, 7, 6, 3}, 30, SoundEvents.ARMOR_EQUIP_LEATHER,
             3.0F, 0.0F, () -> Ingredient.of(WizardryDelight.MAG_ELITRA.get()));
 

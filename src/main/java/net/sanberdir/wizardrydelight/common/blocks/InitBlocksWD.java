@@ -27,7 +27,9 @@ public class InitBlocksWD {
 
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, WizardryDelight.MOD_ID);
-
+//    public static final RegistryObject<Block> WD_SPAWNER = registerBlockWithoutBlockItem("wd_spawner",
+//            () -> new WDSpawner(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE)
+//                    .noOcclusion().strength(4F).explosionResistance(20F)));
     public static final RegistryObject<Block> DRYER = registerBlock("dryer",
             () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).sound(SoundType.WOOD).noOcclusion()),ModCreativeTab.BUSHES);
     public static final RegistryObject<Block> SUGAR_SACK = registerBlock("sugar_sack",

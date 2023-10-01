@@ -2,6 +2,7 @@ package net.sanberdir.wizardrydelight.common.Items;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 
 import net.minecraft.world.item.Item;
@@ -14,6 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.sanberdir.wizardrydelight.WizardryDelight;
 import net.sanberdir.wizardrydelight.common.Items.customItem.*;
+import net.sanberdir.wizardrydelight.common.armor.ModArmorMaterials;
 import net.sanberdir.wizardrydelight.common.blocks.InitBlocksWD;
 import net.sanberdir.wizardrydelight.client.ModCreativeTab;
 
@@ -22,6 +24,17 @@ public class InitItemsWD {
 
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, WizardryDelight.MOD_ID);
+//    public static final RegistryObject<Item> WD_SPAWNER = ITEMS.register("wd_spawner",
+//            () -> new ItemNameBlockItem(InitBlocksWD.WD_SPAWNER.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
+    public static final RegistryObject<Item> SOUL_STONE_CHARGED = ITEMS.register("soul_stone_charged",
+            () -> new SoulStoneActive(new Item.Properties().craftRemainder(WizardryDelight.SOUL_STONE_DISCHARGED.get()).stacksTo(1)));
+    public static final RegistryObject<Item> HAT_HELMET = ITEMS.register("hat_helmet",
+            () -> new HatArmorItem(ModArmorMaterials.HAT, EquipmentSlot.HEAD,
+                    new Item.Properties().durability(105).tab(ModCreativeTab.BUSHES)));
+
+    public static final RegistryObject<Item> HAT_HELMET_CLEAR = ITEMS.register("hat_helmet_clear",
+            () -> new ClearHatArmorItem(ModArmorMaterials.HAT_CLEAR, EquipmentSlot.HEAD,
+                    new Item.Properties().durability(105).tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> STAR_BALL = ITEMS.register("star_ball",
             () -> new StarBallItem(new Item.Properties()));
     public static final RegistryObject<Item> ROBIN_STICK = ITEMS.register("robin_stick",

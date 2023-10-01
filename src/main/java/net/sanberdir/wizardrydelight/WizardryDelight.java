@@ -42,6 +42,7 @@ import net.sanberdir.wizardrydelight.client.ModCreativeTab;
 import net.sanberdir.wizardrydelight.common.Items.InitItemsWD;
 import net.sanberdir.wizardrydelight.common.Items.customItem.AppleBoat;
 import net.sanberdir.wizardrydelight.common.Items.customItem.AppleChestBoat;
+import net.sanberdir.wizardrydelight.common.Items.customItem.SoulStoneDeactive;
 import net.sanberdir.wizardrydelight.common.ModWoodType;
 import net.sanberdir.wizardrydelight.common.armor.ModArmorMaterials;
 import net.sanberdir.wizardrydelight.common.armor.ModElytra;
@@ -84,6 +85,7 @@ public class WizardryDelight
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
     // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
+    public static final RegistryObject<Item> SOUL_STONE_DISCHARGED = ITEMS.register("soul_stone_discharged", () -> new SoulStoneDeactive(new Item.Properties().stacksTo(1).tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> MAG_ELITRA =  ITEMS.register("mag_elitra", () ->new ModElytra(ModArmorMaterials.ELITRA, EquipmentSlot.CHEST, new Item.Properties().durability(1200).tab(ModCreativeTab.BUSHES).fireResistant()));
 
    public WizardryDelight()
@@ -152,8 +154,6 @@ public class WizardryDelight
             registerEntityEvent.registerEntityRenderer(ModEntityData.MOD_BOAT_DATA, ModBoatRenderer::new);
             registerEntityEvent.registerBlockEntityRenderer(ModBlockEntities.SIGN_ENTITY_TYPE, SignRenderer::new);
             registerEntityEvent.registerEntityRenderer(ModEntityData.MOD_CHEST_BOAT_DATA, ModChestBoatRenderer::new);
-
-
         }
 
         @SubscribeEvent
