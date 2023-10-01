@@ -24,8 +24,8 @@ public class InitItemsWD {
 
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, WizardryDelight.MOD_ID);
-//    public static final RegistryObject<Item> WD_SPAWNER = ITEMS.register("wd_spawner",
-//            () -> new ItemNameBlockItem(InitBlocksWD.WD_SPAWNER.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
+    public static final RegistryObject<Item> WD_SPAWNER = ITEMS.register("wd_spawner",
+            () -> new ItemNameBlockItem(InitBlocksWD.WD_SPAWNER.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
     public static final RegistryObject<Item> SOUL_STONE_CHARGED = ITEMS.register("soul_stone_charged",
             () -> new SoulStoneActive(new Item.Properties().craftRemainder(WizardryDelight.SOUL_STONE_DISCHARGED.get()).stacksTo(1)));
     public static final RegistryObject<Item> HAT_HELMET = ITEMS.register("hat_helmet",
