@@ -5,9 +5,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 
-import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,12 +17,73 @@ import net.sanberdir.wizardrydelight.common.Items.customItem.*;
 import net.sanberdir.wizardrydelight.common.armor.ModArmorMaterials;
 import net.sanberdir.wizardrydelight.common.blocks.InitBlocksWD;
 import net.sanberdir.wizardrydelight.client.ModCreativeTab;
+import net.sanberdir.wizardrydelight.common.customeffect.ModWDEffects;
+import net.sanberdir.wizardrydelight.common.sounds.CustomSoundEvents;
 
 
 public class InitItemsWD {
 
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, WizardryDelight.MOD_ID);
+    public static final RegistryObject<Item> THE_PILLAGERS_CHEST = ITEMS.register("the_pillagers_chest",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+    public static final RegistryObject<Item> RAPIER = ITEMS.register("rapier",
+            () -> new SwordItem(Tiers.NETHERITE, -2,-1.6f,new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES)));
+    public static final RegistryObject<Item> GOLDEN_CHEST_KING_PILLAGER = ITEMS.register("golden_chest_king_pillager",
+            () -> new SneakItemGold(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+    public static final RegistryObject<Item> HEALING_DEW = ITEMS.register("healing_dew",
+            () -> new AnimateItem(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+    public static final RegistryObject<Item> A_DROP_OF_LOVE = ITEMS.register("a_drop_of_love",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+//Пластинка
+    public static final RegistryObject<Item> WIZARDRY_DELIGHT_JAM = ITEMS.register("wizardry_delight_jam",
+            () -> new RecordItem(8, CustomSoundEvents.WIZARDRY_DELIGHT_JAM.get() ,new Item.Properties().stacksTo(1).tab(ModCreativeTab.BUSHES),16));
+    public static final RegistryObject<Item> SWEET_ROLL = ITEMS.register("sweet_roll",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(12).saturationMod(1).alwaysEat()
+                            .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2400, 2), 1F)
+                            .effect(new MobEffectInstance(ModWDEffects.TASTY_FOOD.get(), 2400, 0), 1F)
+                            .effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, 0), 1F)
+                            .build())));
+
+    public static final RegistryObject<Item> JAM_TONIC = ITEMS.register("jam_tonic",
+            () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationMod(2f).alwaysEat().fast()
+                            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 4800, 3), 1F)
+                            .effect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 4800, 3), 1F)
+                            .effect(new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 8), 1F)
+                            .build())));
+
+    public static final RegistryObject<Item> JAM_INVISIBILITY = ITEMS.register("jam_invisibility",
+            () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(10).saturationMod(0.2f).alwaysEat().fast()
+                            .effect(new MobEffectInstance(MobEffects.INVISIBILITY, 9600, 0), 1F)
+                            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 0), 1F)
+                            .build())));
+
+    public static final RegistryObject<Item> LEVITAN_JAM = ITEMS.register("levitan_jam",
+            () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(20).saturationMod(0.5f).alwaysEat().fast()
+                            .effect(new MobEffectInstance(MobEffects.SLOW_FALLING, 400, 0), 1F)
+                            .effect(new MobEffectInstance(MobEffects.JUMP, 400, 1), 1F)
+                            .effect(new MobEffectInstance(MobEffects.LEVITATION, 180, 5), 1F)
+                            .build())));
+    public static final RegistryObject<Item> CHEESE = ITEMS.register("cheese",
+            () -> new Cheese(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(20).saturationMod(1).alwaysEat()
+                            .effect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1F)
+                            .build())));
+    public static final RegistryObject<Item> CHEESE_1 = ITEMS.register("cheese_1",
+            () -> new Cheese1(new Item.Properties()
+                    .food(new FoodProperties.Builder().nutrition(20).saturationMod(1).alwaysEat()
+                            .effect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1F)
+                            .build())));
+    public static final RegistryObject<Item> CHEESE_2 = ITEMS.register("cheese_2",
+            () -> new Cheese2(new Item.Properties()
+                    .food(new FoodProperties.Builder().nutrition(20).saturationMod(1).alwaysEat()
+                            .effect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1F)
+                            .build())));
+
     public static final RegistryObject<Item> WD_SPAWNER = ITEMS.register("wd_spawner",
             () -> new ItemNameBlockItem(InitBlocksWD.WD_SPAWNER.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
     public static final RegistryObject<Item> SOUL_STONE_CHARGED = ITEMS.register("soul_stone_charged",

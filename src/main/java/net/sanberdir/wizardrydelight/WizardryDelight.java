@@ -52,6 +52,7 @@ import net.sanberdir.wizardrydelight.common.blocks.InitBlocksWD;
 import net.sanberdir.wizardrydelight.common.blocks.ModEntitiesBlock;
 import net.sanberdir.wizardrydelight.common.blocks.customBlocks.entity_blocks.AppleSign;
 import net.sanberdir.wizardrydelight.common.blocks.customBlocks.entity_blocks.AppleWallSign;
+import net.sanberdir.wizardrydelight.common.customeffect.ModWDEffects;
 import net.sanberdir.wizardrydelight.common.entity.ModBlockEntities;
 import net.sanberdir.wizardrydelight.common.entity.ModEntities;
 import net.sanberdir.wizardrydelight.common.entity.boat.EntityTypeInitializer;
@@ -105,6 +106,7 @@ public class WizardryDelight
         ModEntities.register(modEventBus);
         WDBlockEntities.register(modEventBus);
         ModParticles.register(modEventBus);
+        ModWDEffects.register(modEventBus);
         CustomSoundEvents.register(modEventBus);
         ClientOnlyRegistrar clientOnlyRegistrar = new ClientOnlyRegistrar(modEventBus);
         // Register ourselves for server and other game events we are interested in
