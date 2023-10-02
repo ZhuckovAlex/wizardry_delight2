@@ -64,6 +64,7 @@ import net.sanberdir.wizardrydelight.common.entity.chest_boat.ModChestBoatRender
 import net.sanberdir.wizardrydelight.common.entity.chicken.client.FeatherChicken2Renderer;
 import net.sanberdir.wizardrydelight.common.entity.chicken.client.FeatherChickenRenderer;
 import net.sanberdir.wizardrydelight.common.entity.entity_block.WDBlockEntities;
+import net.sanberdir.wizardrydelight.common.entity.fat_pig.client.FatPigRenderer;
 import net.sanberdir.wizardrydelight.common.entity.wool_cow.client.WoolCow2Renderer;
 import net.sanberdir.wizardrydelight.common.entity.wool_cow.client.WoolCowRenderer;
 import net.sanberdir.wizardrydelight.common.particle.ModParticles;
@@ -168,6 +169,7 @@ public class WizardryDelight
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            EntityRenderers.register(ModEntityTypesWD.FAT_PIG.get(), FatPigRenderer::new);
             EntityRenderers.register(ModEntityTypesWD.FEATHER_CHICKEN.get(), FeatherChickenRenderer::new);
             EntityRenderers.register(ModEntityTypesWD.FEATHER_CHICKEN2.get(), FeatherChicken2Renderer::new);
             EntityRenderers.register(ModEntityTypesWD.WOOL_COW.get(), WoolCowRenderer::new);

@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.sanberdir.wizardrydelight.WizardryDelight;
 import net.sanberdir.wizardrydelight.common.entity.chicken.custom.FeatherChicken;
 import net.sanberdir.wizardrydelight.common.entity.chicken.custom.FeatherChicken2;
+import net.sanberdir.wizardrydelight.common.entity.fat_pig.custom.FatPig;
 import net.sanberdir.wizardrydelight.common.entity.wool_cow.custom.WoolCow;
 import net.sanberdir.wizardrydelight.common.entity.wool_cow.custom.WoolCow2;
 
@@ -22,6 +23,11 @@ public class ModEntityTypesWD {
                     () -> EntityType.Builder.of(WoolCow::new, MobCategory.AMBIENT)
                             .sized(1.2f, 1.4f)
                             .build(new ResourceLocation(WizardryDelight.MOD_ID, "wool_cow").toString()));
+    public static final RegistryObject<EntityType<FatPig>> FAT_PIG =
+            ENTITY_TYPES.register("fat_pig",
+                    () -> EntityType.Builder.of(FatPig::new, MobCategory.AMBIENT)
+                            .sized(0.8f, 0.8f)
+                            .build(new ResourceLocation(WizardryDelight.MOD_ID, "fat_pig").toString()));
     public static final RegistryObject<EntityType<FeatherChicken>> FEATHER_CHICKEN =
             ENTITY_TYPES.register("feather_chicken",
                     () -> EntityType.Builder.of(FeatherChicken::new, MobCategory.AMBIENT)

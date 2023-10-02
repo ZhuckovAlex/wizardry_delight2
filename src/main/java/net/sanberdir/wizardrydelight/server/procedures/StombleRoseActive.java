@@ -2,6 +2,8 @@ package net.sanberdir.wizardrydelight.server.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -36,7 +38,7 @@ public class StombleRoseActive {
         double fromZ = 0;
         double fromX = 0;
         double fromY = 0;
-        if (!(!world.getEntitiesOfClass(Player.class, AABB.ofSize(new Vec3(x, y, z), 1, 1, 1), e -> true).isEmpty())) {
+        if (!(!world.getEntitiesOfClass(Player.class, AABB.ofSize(new Vec3(x, y, z), 1, 1, 1), e -> true).isEmpty())&&(!(entity instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false))) {
 
             if ((world.getBlockState(new BlockPos(entity.getX(), entity.getY(), entity.getZ()))) == InitBlocksWD.ROSE_OF_THE_MURDERER.get().defaultBlockState()) {
                 {
