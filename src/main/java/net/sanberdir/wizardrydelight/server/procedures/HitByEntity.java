@@ -35,6 +35,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.sanberdir.wizardrydelight.common.Items.InitItemsWD;
+import net.sanberdir.wizardrydelight.common.entity.chicken.custom.FeatherChicken;
+import net.sanberdir.wizardrydelight.common.entity.chicken.custom.FeatherChicken2;
 import net.sanberdir.wizardrydelight.common.entity.wool_cow.custom.WoolCow;
 import net.sanberdir.wizardrydelight.common.entity.wool_cow.custom.WoolCow2;
 import net.sanberdir.wizardrydelight.common.particle.ModParticles;
@@ -493,72 +495,137 @@ public class HitByEntity {
             if (world instanceof ServerLevel _level)
                 _level.sendParticles(ModParticles.ROBIN_STAR_PARTICLES_PROJECTILE.get(), x, y, z, 36, 0.5, 0.5, 0.5, 0.05f);
         }
+        if (!(entity instanceof LivingEntity _livEnt ? _livEnt.isBaby() : false) && !world.getEntitiesOfClass(FeatherChicken.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).isEmpty()) {
+            if (!entity.level.isClientSide())
+                entity.discard();
+            if (world instanceof Level _level) {
+                if (!_level.isClientSide()) {
+                    _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1);
+                } else {
+                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1, false);
+                }
+            }
+            if (world instanceof Level _level && !_level.isClientSide()) {
+                ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.COOKED_CHICKEN));
+                entityToSpawn.setPickUpDelay(10);
+                _level.addFreshEntity(entityToSpawn);
+            }
+            if (Math.random() < 0.35) {
+                if (world instanceof Level _level && !_level.isClientSide()) {
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.SPARKLING_POLLEN.get()));
+                    entityToSpawn.setPickUpDelay(10);
+                    _level.addFreshEntity(entityToSpawn);
+                }
+            }
+            if (Math.random() < 0.75) {
+                if (world instanceof Level _level && !_level.isClientSide()) {
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(ModItems.CHICKEN_SOUP.get()));
+                    entityToSpawn.setPickUpDelay(10);
+                    _level.addFreshEntity(entityToSpawn);
+                }
+                if (Math.random() < 0.50) {
+                    if (world instanceof Level _level && !_level.isClientSide()) {
+                        ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.FEATHER));
+                        entityToSpawn.setPickUpDelay(10);
+                        _level.addFreshEntity(entityToSpawn);
+                    }
+                }
+                if (Math.random() < 0.75) {
+                    if (world instanceof Level _level && !_level.isClientSide()) {
+                        ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(ModItems.ROAST_CHICKEN.get()));
+                        entityToSpawn.setPickUpDelay(10);
+                        _level.addFreshEntity(entityToSpawn);
+                    }
+                    if (Math.random() < 0.50) {
+                        if (world instanceof Level _level && !_level.isClientSide()) {
+                            ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.FEATHER));
+                            entityToSpawn.setPickUpDelay(10);
+                            _level.addFreshEntity(entityToSpawn);
+                        }
+                    }
+                }
+            }
+            if (world instanceof ServerLevel _level)
+                _level.sendParticles(ModParticles.ROBIN_STAR_PARTICLES_PROJECTILE.get(), x, y, z, 36, 0.5, 0.5, 0.5, 0.05f);
+        } else if ((entity instanceof LivingEntity _livEnt ? _livEnt.isBaby() : false) && !world.getEntitiesOfClass(FeatherChicken.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).isEmpty()) {
+            if (!entity.level.isClientSide())
+                entity.discard();
+            if (world instanceof Level _level) {
+                if (!_level.isClientSide()) {
+                    _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1);
+                } else {
+                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1, false);
+                }
+            }
+            if (world instanceof ServerLevel _level)
+                _level.sendParticles(ModParticles.ROBIN_STAR_PARTICLES_PROJECTILE.get(), x, y, z, 36, 0.5, 0.5, 0.5, 0.05f);
+        }
 
-//        if (!(entity instanceof LivingEntity _livEnt ? _livEnt.isBaby() : false) && !world.getEntitiesOfClass(FeatherChicken2.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).isEmpty()) {
-//            if (!entity.level.isClientSide())
-//                entity.discard();
-//            if (world instanceof Level _level) {
-//                if (!_level.isClientSide()) {
-//                    _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1);
-//                } else {
-//                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1, false);
-//                }
-//            }
-//            if (world instanceof Level _level && !_level.isClientSide()) {
-//                ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.COOKED_CHICKEN));
-//                entityToSpawn.setPickUpDelay(10);
-//                _level.addFreshEntity(entityToSpawn);
-//            }
-//            if (Math.random() < 0.35) {
-//                if (world instanceof Level _level && !_level.isClientSide()) {
-//                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.SPARKLING_POLLEN.get()));
-//                    entityToSpawn.setPickUpDelay(10);
-//                    _level.addFreshEntity(entityToSpawn);
-//                }
-//            }
-//            if (Math.random() < 0.75) {
-//                if (world instanceof Level _level && !_level.isClientSide()) {
-//                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(ModItems.CHICKEN_SOUP.get()));
-//                    entityToSpawn.setPickUpDelay(10);
-//                    _level.addFreshEntity(entityToSpawn);
-//                }
-//                if (Math.random() < 0.50) {
-//                    if (world instanceof Level _level && !_level.isClientSide()) {
-//                        ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.FEATHER));
-//                        entityToSpawn.setPickUpDelay(10);
-//                        _level.addFreshEntity(entityToSpawn);
-//                    }
-//                }
-//                if (Math.random() < 0.75) {
-//                    if (world instanceof Level _level && !_level.isClientSide()) {
-//                        ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(ModItems.ROAST_CHICKEN.get()));
-//                        entityToSpawn.setPickUpDelay(10);
-//                        _level.addFreshEntity(entityToSpawn);
-//                    }
-//                    if (Math.random() < 0.50) {
-//                        if (world instanceof Level _level && !_level.isClientSide()) {
-//                            ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.FEATHER));
-//                            entityToSpawn.setPickUpDelay(10);
-//                            _level.addFreshEntity(entityToSpawn);
-//                        }
-//                    }
-//                }
-//            }
-//            if (world instanceof ServerLevel _level)
-//                _level.sendParticles(ModParticles.ROBIN_STAR_PARTICLES_PROJECTILE.get(), x, y, z, 36, 0.5, 0.5, 0.5, 0.05f);
-//        } else if ((entity instanceof LivingEntity _livEnt ? _livEnt.isBaby() : false) && !world.getEntitiesOfClass(FeatherChicken2.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).isEmpty()) {
-//            if (!entity.level.isClientSide())
-//                entity.discard();
-//            if (world instanceof Level _level) {
-//                if (!_level.isClientSide()) {
-//                    _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1);
-//                } else {
-//                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1, false);
-//                }
-//            }
-//            if (world instanceof ServerLevel _level)
-//                _level.sendParticles(ModParticles.ROBIN_STAR_PARTICLES_PROJECTILE.get(), x, y, z, 36, 0.5, 0.5, 0.5, 0.05f);
-//        }
+        if (!(entity instanceof LivingEntity _livEnt ? _livEnt.isBaby() : false) && !world.getEntitiesOfClass(FeatherChicken2.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).isEmpty()) {
+            if (!entity.level.isClientSide())
+                entity.discard();
+            if (world instanceof Level _level) {
+                if (!_level.isClientSide()) {
+                    _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1);
+                } else {
+                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1, false);
+                }
+            }
+            if (world instanceof Level _level && !_level.isClientSide()) {
+                ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.COOKED_CHICKEN));
+                entityToSpawn.setPickUpDelay(10);
+                _level.addFreshEntity(entityToSpawn);
+            }
+            if (Math.random() < 0.35) {
+                if (world instanceof Level _level && !_level.isClientSide()) {
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.SPARKLING_POLLEN.get()));
+                    entityToSpawn.setPickUpDelay(10);
+                    _level.addFreshEntity(entityToSpawn);
+                }
+            }
+            if (Math.random() < 0.75) {
+                if (world instanceof Level _level && !_level.isClientSide()) {
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(ModItems.CHICKEN_SOUP.get()));
+                    entityToSpawn.setPickUpDelay(10);
+                    _level.addFreshEntity(entityToSpawn);
+                }
+                if (Math.random() < 0.50) {
+                    if (world instanceof Level _level && !_level.isClientSide()) {
+                        ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.FEATHER));
+                        entityToSpawn.setPickUpDelay(10);
+                        _level.addFreshEntity(entityToSpawn);
+                    }
+                }
+                if (Math.random() < 0.75) {
+                    if (world instanceof Level _level && !_level.isClientSide()) {
+                        ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(ModItems.ROAST_CHICKEN.get()));
+                        entityToSpawn.setPickUpDelay(10);
+                        _level.addFreshEntity(entityToSpawn);
+                    }
+                    if (Math.random() < 0.50) {
+                        if (world instanceof Level _level && !_level.isClientSide()) {
+                            ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.FEATHER));
+                            entityToSpawn.setPickUpDelay(10);
+                            _level.addFreshEntity(entityToSpawn);
+                        }
+                    }
+                }
+            }
+            if (world instanceof ServerLevel _level)
+                _level.sendParticles(ModParticles.ROBIN_STAR_PARTICLES_PROJECTILE.get(), x, y, z, 36, 0.5, 0.5, 0.5, 0.05f);
+        } else if ((entity instanceof LivingEntity _livEnt ? _livEnt.isBaby() : false) && !world.getEntitiesOfClass(FeatherChicken2.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).isEmpty()) {
+            if (!entity.level.isClientSide())
+                entity.discard();
+            if (world instanceof Level _level) {
+                if (!_level.isClientSide()) {
+                    _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1);
+                } else {
+                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death")), SoundSource.NEUTRAL, 1, 1, false);
+                }
+            }
+            if (world instanceof ServerLevel _level)
+                _level.sendParticles(ModParticles.ROBIN_STAR_PARTICLES_PROJECTILE.get(), x, y, z, 36, 0.5, 0.5, 0.5, 0.05f);
+        }
 
         if (!(entity instanceof LivingEntity _livEnt ? _livEnt.isBaby() : false) && !world.getEntitiesOfClass(Bee.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).isEmpty()) {
             if (!entity.level.isClientSide())
