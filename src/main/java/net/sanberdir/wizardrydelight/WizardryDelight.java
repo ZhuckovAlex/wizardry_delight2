@@ -5,6 +5,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ArmorStandRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -55,11 +56,16 @@ import net.sanberdir.wizardrydelight.common.blocks.customBlocks.entity_blocks.Ap
 import net.sanberdir.wizardrydelight.common.customeffect.ModWDEffects;
 import net.sanberdir.wizardrydelight.common.entity.ModBlockEntities;
 import net.sanberdir.wizardrydelight.common.entity.ModEntities;
+import net.sanberdir.wizardrydelight.common.entity.ModEntityTypesWD;
 import net.sanberdir.wizardrydelight.common.entity.boat.EntityTypeInitializer;
 import net.sanberdir.wizardrydelight.common.entity.boat.ModBoatRenderer;
 import net.sanberdir.wizardrydelight.common.entity.boat.ModEntityData;
 import net.sanberdir.wizardrydelight.common.entity.chest_boat.ModChestBoatRenderer;
+import net.sanberdir.wizardrydelight.common.entity.chicken.client.FeatherChicken2Renderer;
+import net.sanberdir.wizardrydelight.common.entity.chicken.client.FeatherChickenRenderer;
 import net.sanberdir.wizardrydelight.common.entity.entity_block.WDBlockEntities;
+import net.sanberdir.wizardrydelight.common.entity.wool_cow.client.WoolCow2Renderer;
+import net.sanberdir.wizardrydelight.common.entity.wool_cow.client.WoolCowRenderer;
 import net.sanberdir.wizardrydelight.common.particle.ModParticles;
 import net.sanberdir.wizardrydelight.common.sounds.CustomSoundEvents;
 import net.sanberdir.wizardrydelight.common.world.feature.ModConfiguredFeatures;
@@ -104,6 +110,7 @@ public class WizardryDelight
         ModConfiguredFeatures.register(modEventBus);
         ModPlacedFeatures.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModEntityTypesWD.register(modEventBus);
         WDBlockEntities.register(modEventBus);
         ModParticles.register(modEventBus);
         ModWDEffects.register(modEventBus);
@@ -161,6 +168,10 @@ public class WizardryDelight
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            EntityRenderers.register(ModEntityTypesWD.FEATHER_CHICKEN.get(), FeatherChickenRenderer::new);
+            EntityRenderers.register(ModEntityTypesWD.FEATHER_CHICKEN2.get(), FeatherChicken2Renderer::new);
+            EntityRenderers.register(ModEntityTypesWD.WOOL_COW.get(), WoolCowRenderer::new);
+            EntityRenderers.register(ModEntityTypesWD.WOOL_COW2.get(), WoolCow2Renderer::new);
             ItemProperties.register(WizardryDelight.MAG_ELITRA.get(), new ResourceLocation(MOD_ID, "broken"),
                     (stack, arg1, arg2, arg3) -> ModElytra.isUseable(stack) ? 0 : 1);
             event.enqueueWork(() -> {

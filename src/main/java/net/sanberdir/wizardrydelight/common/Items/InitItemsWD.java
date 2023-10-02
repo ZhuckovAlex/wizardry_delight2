@@ -25,6 +25,8 @@ import vectorwing.farmersdelight.common.registry.ModEffects;
 public class InitItemsWD {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, WizardryDelight.MOD_ID);
+    public static final RegistryObject<Item> EGG_OF_A_MOTTLED_CHICKEN = ITEMS.register("egg_of_a_mottled_chicken",
+            () -> new EggMottled(new Item.Properties().tab(ModCreativeTab.BUSHES).stacksTo(16)));
     public static final RegistryObject<Item> SILVERAN = ITEMS.register("silveran",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> THE_MACE_OF_MURDERER = ITEMS.register("the_mace_of_murderer",

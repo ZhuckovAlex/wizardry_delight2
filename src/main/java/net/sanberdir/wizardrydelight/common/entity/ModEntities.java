@@ -12,6 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.sanberdir.wizardrydelight.WizardryDelight;
+import net.sanberdir.wizardrydelight.common.Items.customItem.WDThrownEgg;
 import net.sanberdir.wizardrydelight.common.entity.starball.StarBall;
 
 
@@ -23,6 +24,9 @@ public class ModEntities {
     public static final RegistryObject<EntityType<StarBall>> STAR_BALL = register("projectile_star_ball",
             EntityType.Builder.<StarBall>of(StarBall::new, MobCategory.MISC).setCustomClientFactory(StarBall::new)
                     .setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+    public static final RegistryObject<EntityType<WDThrownEgg>> EGG_MOTTLED = register("egg_mottled",
+            EntityType.Builder.<WDThrownEgg>of(WDThrownEgg::new, MobCategory.MISC).sized(0.25F, 0.25F)
+                    .clientTrackingRange(4).updateInterval(10));
 
     private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
         return ENTITY_TYPES.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
