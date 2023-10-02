@@ -418,13 +418,13 @@ public class HitByBlock {
             world.setBlock(new BlockPos(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 
             if (world instanceof Level _level && !_level.isClientSide()) {
-                ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.CHARNIKA_JAM.get(),2));
+                ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.CHARMING_BERRIES_JAM.get(),2));
                 entityToSpawn.setPickUpDelay(10);
                 _level.addFreshEntity(entityToSpawn);
             }
             if (Math.random() < 0.75) {
                 if (world instanceof Level _level && !_level.isClientSide()) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.CHARNIKA_JAM.get()));
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.CHARMING_BERRIES_JAM.get()));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
@@ -453,13 +453,13 @@ public class HitByBlock {
             world.setBlock(new BlockPos(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 
             if (world instanceof Level _level && !_level.isClientSide()) {
-                ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.YADOGA_JAM.get(),2));
+                ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.POISON_BERRY_JAM.get(),2));
                 entityToSpawn.setPickUpDelay(10);
                 _level.addFreshEntity(entityToSpawn);
             }
             if (Math.random() < 0.75) {
                 if (world instanceof Level _level && !_level.isClientSide()) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.YADOGA_JAM.get()));
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.POISON_BERRY_JAM.get()));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }

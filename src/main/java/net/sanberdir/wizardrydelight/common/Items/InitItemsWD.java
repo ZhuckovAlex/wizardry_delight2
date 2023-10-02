@@ -19,12 +19,76 @@ import net.sanberdir.wizardrydelight.common.blocks.InitBlocksWD;
 import net.sanberdir.wizardrydelight.client.ModCreativeTab;
 import net.sanberdir.wizardrydelight.common.customeffect.ModWDEffects;
 import net.sanberdir.wizardrydelight.common.sounds.CustomSoundEvents;
+import vectorwing.farmersdelight.common.registry.ModEffects;
 
 
 public class InitItemsWD {
-
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, WizardryDelight.MOD_ID);
+    public static final RegistryObject<Item> SILVERAN = ITEMS.register("silveran",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+    public static final RegistryObject<Item> THE_MACE_OF_MURDERER = ITEMS.register("the_mace_of_murderer",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).stacksTo(1)));
+    public static final RegistryObject<Item> CLEANING_DECOCTION = ITEMS.register("cleansing_decoction",
+            () -> new CleansingDecoction(new Item.Properties().tab(ModCreativeTab.BUSHES).durability(12)));
+    public static final RegistryObject<Item> ROAST_GOAT_MEAT_WITH_FREEZE_BERRIES = ITEMS.register("roast_goat_meat_with_freeze_berries_syrup",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(12).saturationMod(0.6f)
+                    .effect(new MobEffectInstance(ModWDEffects.TASTY_FOOD.get(), 900, 0), 1F)
+                    .build())));
+    public static final RegistryObject<Item> BEAR_NEAT_SOUP = ITEMS.register("bear_meat_soup",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(7).saturationMod(0.4f)
+                    .effect(new MobEffectInstance(ModEffects.COMFORT.get(), 1200, 0), 1F)
+                    .build())));
+    public static final RegistryObject<Item> SPAGHETTI_IN_THE_NORTH = ITEMS.register("spaghetti_in_the_north",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(8).saturationMod(0.5f)
+                    .effect(new MobEffectInstance(ModEffects.COMFORT.get(), 900, 0), 1F)
+                    .build())));
+    public static final RegistryObject<Item> GOULASH_WITH_GOAT_MEAT = ITEMS.register("goulash_with_goat_meat",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(6).saturationMod(0.8f)
+                    .effect(new MobEffectInstance(ModEffects.COMFORT.get(), 900, 0), 1F)
+                    .build())));
+    public static final RegistryObject<Item> HOT_COCOA_WITH_SPARKING_POLLEN = ITEMS.register("hot_cocoa_with_sparkling_pollen",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(8).saturationMod(0.5f)
+                    .effect(new MobEffectInstance(MobEffects.REGENERATION, 80, 3), 1F)
+                    .build())));
+    public static final RegistryObject<Item> APPLE_JAM = ITEMS.register("apple_jam",
+            () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(9).saturationMod(0.7f)
+                    .effect(new MobEffectInstance(ModWDEffects.TASTY_FOOD.get(), 2400, 0), 1F)
+                    .build())));
+
+    public static final RegistryObject<Item> GLOWING_JAM = ITEMS.register("glowing_jam",
+            () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(12).saturationMod(0.167f)
+                    .effect(new MobEffectInstance(MobEffects.GLOWING, 800, 0), 1F)
+                    .build())));
+    public static final RegistryObject<Item>  IRIS = ITEMS.register("iris",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(1.7f)
+                            .build())));
+    public static final RegistryObject<Item>  NOT_PICKLED_SHISH_KEBAB = ITEMS.register("not_pickled_shish_kebab",
+            () -> new NotPickledKebab(new Item.Properties().durability(1500)));
+    public static final RegistryObject<Item>  PICKLED_SHISH_KEBAB = ITEMS.register("pickled_shish_kebab",
+            () -> new PickledKebab(new Item.Properties().tab(ModCreativeTab.BUSHES).craftRemainder(Items.FLOWER_POT)));
+    public static final RegistryObject<Item>  GOAT_MEAT_KEBAB = ITEMS.register("goat_meat_kebab",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f)
+                            .build())));
+    public static final RegistryObject<Item>  COCKED_GOAT_MEAT_KEBAB = ITEMS.register("cocked_goat_meat_kebab",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationMod(0.8f)
+                            .build())));
+    public static final RegistryObject<Item>  RAW_SLICING_GOATS_MEET = ITEMS.register("raw_slising_goats_meat",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.3f)
+                    .effect(new MobEffectInstance(MobEffects.CONFUSION, 80, 0), 0.2F)
+                    .build())));
+    public static final RegistryObject<Item>  COCKED_SLICING_GOATS_MEET = ITEMS.register("cocked_slising_goats_meat",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(4).saturationMod(0.6f)
+                    .build())));
+    public static final RegistryObject<Item> SWEET_JAM = ITEMS.register("sweet_jam",
+            () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(7).saturationMod(0.7f)
+                    .effect(new MobEffectInstance(ModWDEffects.TASTY_FOOD.get(), 1200, 0), 1F)
+                    .build())));
+    public static final RegistryObject<Item> SUGAR_REFINED = ITEMS.register("sugar_refined",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(2).saturationMod(1).alwaysEat().fast().build())));
     public static final RegistryObject<Item> THE_PILLAGERS_CHEST = ITEMS.register("the_pillagers_chest",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> RAPIER = ITEMS.register("rapier",
@@ -208,7 +272,7 @@ public class InitItemsWD {
                             .build())));
     public static final RegistryObject<Item> JAR = ITEMS.register("jar",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
-    public static final RegistryObject<Item>  YADOGA_JAM = ITEMS.register("yadoga_jam",
+    public static final RegistryObject<Item> POISON_BERRY_JAM = ITEMS.register("poison_berry_jam",
             () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(6).saturationMod(0.8f)
                     .effect(new MobEffectInstance(MobEffects.POISON, 100, 0), 1F)
                     .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 800, 0), 1F)
@@ -219,7 +283,7 @@ public class InitItemsWD {
                     .effect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 0), 1F)
                     .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 3600, 0), 1F)
                     .build())));
-    public static final RegistryObject<Item>  CHARNIKA_JAM = ITEMS.register("charnika_jam",
+    public static final RegistryObject<Item> CHARMING_BERRIES_JAM = ITEMS.register("charming_berries_jam",
             () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(5).saturationMod(4f)
                     .effect(new MobEffectInstance(MobEffects.LUCK, 6000, 1), 0.05f)
                     .effect(new MobEffectInstance(MobEffects.DIG_SPEED, 3600, 0), 0.7f)

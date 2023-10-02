@@ -164,12 +164,22 @@ public class WizardryDelight
             ItemProperties.register(WizardryDelight.MAG_ELITRA.get(), new ResourceLocation(MOD_ID, "broken"),
                     (stack, arg1, arg2, arg3) -> ModElytra.isUseable(stack) ? 0 : 1);
             event.enqueueWork(() -> {
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.MEADOW_GOLDEN_FLOWER.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.ROSE_OF_GHOSTY_TEARS.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.ROSE_OF_THE_MURDERER.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.POISON_BERRY.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.CHARMING_BERRIES.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.FREEZE_BERRIES.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.FIRE_STEM.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.APPLE_LEAVES.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.APPLE_SAPLING.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.SPATIAL_ORCHID.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.WARPED_WART.get(), 0.2f);
                 ComposterBlock.COMPOSTABLES.put(InitItemsWD.COASTAL_STEEP_FLOWER.get(), 0.2f);
                 ComposterBlock.COMPOSTABLES.put(InitItemsWD.COASTAL_STEEP_FIBERS.get(), 0.2f);
                 ComposterBlock.COMPOSTABLES.put(InitItemsWD.COASTAL_STEEP.get(), 0.2f);
-                ComposterBlock.COMPOSTABLES.put(InitItemsWD.CHARMING_BERRIES.get(), 0.2f);
-                ComposterBlock.COMPOSTABLES.put(InitItemsWD.FIRE_STEM.get(), 0.2f);
-                ComposterBlock.COMPOSTABLES.put(InitItemsWD.ROSE_OF_GHOSTY_TEARS.get(), 0.2f);
+                ComposterBlock.COMPOSTABLES.put(InitItemsWD.MEDICAL_POTATO.get(), 0.2f);
+
             });
         }
     }
