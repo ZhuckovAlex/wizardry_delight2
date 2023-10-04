@@ -7,13 +7,13 @@
   },
   "ingredients": [
     {
-      "item": "wizardry_delight:black_berries"
+      "item": "wizardry_delight:charming_berries"
     },
     {
-      "item": "wizardry_delight:black_berries"
+      "item": "wizardry_delight:charming_berries"
     },
     {
-      "item": "wizardry_delight:black_berries"
+      "item": "wizardry_delight:charming_berries"
     },
     {
       "item": "wizardry_delight:sugar_refined"
@@ -27,6 +27,6 @@
   ],
   "recipe_book_tab": "jam",
   "result": {
-    "item": "wizardry_delight:charnika_jam"
+    "item": "wizardry_delight:charming_berries_jam"
   }
 }
