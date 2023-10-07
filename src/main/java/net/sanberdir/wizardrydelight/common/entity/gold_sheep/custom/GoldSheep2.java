@@ -61,7 +61,7 @@ public class GoldSheep2 extends GoldSheep {
     @Override
     public void baseTick() {
         super.baseTick();
-        if (Math.random() <= 0.01) {
+        if (Math.random() <= 0.04) {
             plusWool(this.level, this.getX(), this.getY(), this.getZ(), this);
         }
     }
