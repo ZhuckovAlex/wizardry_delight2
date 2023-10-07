@@ -65,6 +65,8 @@ import net.sanberdir.wizardrydelight.common.entity.chicken.client.FeatherChicken
 import net.sanberdir.wizardrydelight.common.entity.chicken.client.FeatherChickenRenderer;
 import net.sanberdir.wizardrydelight.common.entity.entity_block.WDBlockEntities;
 import net.sanberdir.wizardrydelight.common.entity.fat_pig.client.FatPigRenderer;
+import net.sanberdir.wizardrydelight.common.entity.gold_sheep.client.GoldSheep2Renderer;
+import net.sanberdir.wizardrydelight.common.entity.gold_sheep.client.GoldSheepRenderer;
 import net.sanberdir.wizardrydelight.common.entity.wool_cow.client.WoolCow2Renderer;
 import net.sanberdir.wizardrydelight.common.entity.wool_cow.client.WoolCowRenderer;
 import net.sanberdir.wizardrydelight.common.particle.ModParticles;
@@ -174,6 +176,8 @@ public class WizardryDelight
             EntityRenderers.register(ModEntityTypesWD.FEATHER_CHICKEN2.get(), FeatherChicken2Renderer::new);
             EntityRenderers.register(ModEntityTypesWD.WOOL_COW.get(), WoolCowRenderer::new);
             EntityRenderers.register(ModEntityTypesWD.WOOL_COW2.get(), WoolCow2Renderer::new);
+            EntityRenderers.register(ModEntityTypesWD.GOLD_SHEEP.get(), GoldSheepRenderer::new);
+            EntityRenderers.register(ModEntityTypesWD.GOLD_SHEEP2.get(), GoldSheep2Renderer::new);
             ItemProperties.register(WizardryDelight.MAG_ELITRA.get(), new ResourceLocation(MOD_ID, "broken"),
                     (stack, arg1, arg2, arg3) -> ModElytra.isUseable(stack) ? 0 : 1);
             event.enqueueWork(() -> {

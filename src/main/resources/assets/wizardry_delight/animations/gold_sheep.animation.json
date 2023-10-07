@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.wool_cow.idle": {
+		"animation.gold_sheep.idle": {
 			"animation_length": 1.04167,
 			"bones": {
 				"leg1": {
@@ -45,7 +45,7 @@
 				}
 			}
 		},
-		"animation.wool_cow.walk": {
+		"animation.gold_sheep.walk": {
 			"loop": true
 		}
 	},

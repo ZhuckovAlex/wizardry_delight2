@@ -1,4 +1,4 @@
-package net.sanberdir.wizardrydelight.common.entity.wool_cow.custom;
+package net.sanberdir.wizardrydelight.common.entity.gold_sheep.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -25,6 +25,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.sanberdir.wizardrydelight.common.Items.InitItemsWD;
 import net.sanberdir.wizardrydelight.common.entity.ModEntityTypesWD;
+import net.sanberdir.wizardrydelight.common.entity.wool_cow.custom.WoolCow2;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -33,11 +34,11 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class WoolCow extends Animal implements IAnimatable, Shearable, net.minecraftforge.common.IForgeShearable {
+public class GoldSheep extends Animal implements IAnimatable, Shearable, net.minecraftforge.common.IForgeShearable {
 
     private AnimationFactory factory = new AnimationFactory(this);
 
-    public WoolCow(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    public GoldSheep(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
 
     }
@@ -71,11 +72,11 @@ public class WoolCow extends Animal implements IAnimatable, Shearable, net.minec
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wool_cow.idle", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.gold_sheep.idle", true));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wool_cow.walk", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.gold_sheep.walk", true));
         return PlayState.CONTINUE;
     }
 
@@ -93,19 +94,19 @@ public class WoolCow extends Animal implements IAnimatable, Shearable, net.minec
 
 
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.COW_AMBIENT;
+        return SoundEvents.SHEEP_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource p_28306_) {
-        return SoundEvents.COW_HURT;
+        return SoundEvents.SHEEP_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.COW_DEATH;
+        return SoundEvents.SHEEP_DEATH;
     }
 
     protected void playStepSound(BlockPos p_28301_, BlockState p_28302_) {
-        this.playSound(SoundEvents.COW_STEP, 0.15F, 1.0F);
+        this.playSound(SoundEvents.SHEEP_STEP, 0.15F, 1.0F);
     }
 
     protected float getSoundVolume() {
@@ -130,7 +131,7 @@ public class WoolCow extends Animal implements IAnimatable, Shearable, net.minec
         if (!entity.level.isClientSide())
             entity.discard();
         if (world instanceof ServerLevel _level) {
-            Entity entityToSpawn = new WoolCow2(ModEntityTypesWD.WOOL_COW2.get(), _level);
+            Entity entityToSpawn = new GoldSheep2(ModEntityTypesWD.GOLD_SHEEP2.get(), _level);
             entityToSpawn.moveTo(x, y, z, world.getRandom().nextFloat() * 360F, 0);
             if (entityToSpawn instanceof Mob _mobToSpawn)
                 _mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
@@ -149,12 +150,7 @@ public class WoolCow extends Animal implements IAnimatable, Shearable, net.minec
         Entity entity = this;
         Level world = this.level;
 
-        if (itemstack.is(Items.BUCKET) && !this.isBaby()) {
-            player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
-            ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, player, Items.MILK_BUCKET.getDefaultInstance());
-            player.setItemInHand(interactionHand, itemstack1);
-            return InteractionResult.sidedSuccess(this.level.isClientSide);
-        } if (itemstack.is(Items.SHEARS) && !this.isBaby()) {
+        if (itemstack.is(Items.SHEARS) && !this.isBaby()) {
             player.playSound(SoundEvents.SHEEP_SHEAR, 1.0F, 1.0F);
             cowDropWool(world, x, y, z, entity, itemstack);
             return InteractionResult.sidedSuccess(this.level.isClientSide);
@@ -172,31 +168,31 @@ public class WoolCow extends Animal implements IAnimatable, Shearable, net.minec
     public boolean canMate(Animal animal) {
         if (animal == this) {
             return false;
-        } else if (!(animal instanceof WoolCow) && !(animal instanceof WoolCow2)) {
+        } else if (!(animal instanceof GoldSheep) && !(animal instanceof WoolCow2)) {
             return false;
         } else {
             return true;
         }
     }
 
-    public WoolCow getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        WoolCow woolCow;
-        if (ageableMob instanceof WoolCow2) {
-            woolCow = ModEntityTypesWD.WOOL_COW.get().create(serverLevel);
+    public GoldSheep getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+        GoldSheep goldsheep;
+        if (ageableMob instanceof GoldSheep2) {
+            goldsheep = ModEntityTypesWD.GOLD_SHEEP.get().create(serverLevel);
         }
-        else if (ageableMob instanceof WoolCow) {
-            woolCow = ModEntityTypesWD.WOOL_COW.get().create(serverLevel);
+        else if (ageableMob instanceof GoldSheep) {
+            goldsheep = ModEntityTypesWD.GOLD_SHEEP.get().create(serverLevel);
         }else {
-            woolCow = (WoolCow) ageableMob;
-            WoolCow WoolCow;
-            WoolCow = ModEntityTypesWD.WOOL_COW.get().create(serverLevel);
+            goldsheep = (GoldSheep) ageableMob;
+            GoldSheep GoldSheep;
+            GoldSheep = ModEntityTypesWD.GOLD_SHEEP.get().create(serverLevel);
 
 
-            net.sanberdir.wizardrydelight.common.entity.wool_cow.custom.WoolCow woolCow1 = WoolCow;
+            GoldSheep goldsheep1 = GoldSheep;
         }
 
         this.setAttributes();
-        return woolCow;
+        return goldsheep;
     }
 
 
