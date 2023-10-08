@@ -278,6 +278,8 @@ public class InitItemsWD {
                             .build())));
     public static final RegistryObject<Item> JAR = ITEMS.register("jar",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+    public static final RegistryObject<Item> GOLDEN_RUNO = ITEMS.register("golden_runo",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> POISON_BERRY_JAM = ITEMS.register("poison_berry_jam",
             () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(6).saturationMod(0.8f)
                     .effect(new MobEffectInstance(MobEffects.POISON, 100, 0), 1F)
@@ -298,7 +300,20 @@ public class InitItemsWD {
 
                     .build())));
     public static final RegistryObject<Item> KRUTNEVY_BREAD = ITEMS.register("krutnevy_bread",
-            () -> new KrutnevyBread(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(8).saturationMod(0.5F).build())));
+            () -> new KrutnevyBread(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationMod(0.5F).build())));
+    public static final RegistryObject<Item> HUNTING_TWISTER = ITEMS.register("hunting_twister",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build())));
+    public static final RegistryObject<Item> SHPIKACHKI = ITEMS.register("shpikachki",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build())));
+    public static final RegistryObject<Item> COCKED_HUNTING_TWISTER = ITEMS.register("cocked_hunting_twister",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(0.5F).build())));
+    public static final RegistryObject<Item> COCKED_SHPIKACHKI = ITEMS.register("cocked_shpikachki",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(0.5F).build())));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

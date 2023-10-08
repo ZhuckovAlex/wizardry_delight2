@@ -34,6 +34,8 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import javax.annotation.Nullable;
+
 public class GoldSheep extends Animal implements IAnimatable, Shearable, net.minecraftforge.common.IForgeShearable {
 
     private AnimationFactory factory = new AnimationFactory(this);
@@ -45,8 +47,8 @@ public class GoldSheep extends Animal implements IAnimatable, Shearable, net.min
 
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 20.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.3f).build();
+                .add(Attributes.MAX_HEALTH, 10.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.25f).build();
     }
 
     @Override
@@ -124,7 +126,7 @@ public class GoldSheep extends Animal implements IAnimatable, Shearable, net.min
 
         }
         if (world instanceof Level _level && !_level.isClientSide()) {
-            ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.BROWN_WOOL,2));
+            ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.GOLD_NUGGET,5));
             entityToSpawn.setPickUpDelay(10);
             _level.addFreshEntity(entityToSpawn);
         }
@@ -165,36 +167,16 @@ public class GoldSheep extends Animal implements IAnimatable, Shearable, net.min
                 ||itemStack.is(Items.WHEAT);
 
     }
-    public boolean canMate(Animal animal) {
-        if (animal == this) {
-            return false;
-        } else if (!(animal instanceof GoldSheep) && !(animal instanceof WoolCow2)) {
-            return false;
-        } else {
-            return true;
-        }
+
+
+    public boolean canMate(Animal p_29381_) {
+        return false;
     }
 
-    public GoldSheep getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        GoldSheep goldsheep;
-        if (ageableMob instanceof GoldSheep2) {
-            goldsheep = ModEntityTypesWD.GOLD_SHEEP.get().create(serverLevel);
-        }
-        else if (ageableMob instanceof GoldSheep) {
-            goldsheep = ModEntityTypesWD.GOLD_SHEEP.get().create(serverLevel);
-        }else {
-            goldsheep = (GoldSheep) ageableMob;
-            GoldSheep GoldSheep;
-            GoldSheep = ModEntityTypesWD.GOLD_SHEEP.get().create(serverLevel);
-
-
-            GoldSheep goldsheep1 = GoldSheep;
-        }
-
-        this.setAttributes();
-        return goldsheep;
+    @Nullable
+    public AgeableMob getBreedOffspring(ServerLevel p_148993_, AgeableMob p_148994_) {
+        return null;
     }
-
 
 
     protected float getStandingEyeHeight(Pose p_28295_, EntityDimensions p_28296_) {

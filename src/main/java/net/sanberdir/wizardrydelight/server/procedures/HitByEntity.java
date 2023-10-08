@@ -38,6 +38,8 @@ import net.sanberdir.wizardrydelight.common.Items.InitItemsWD;
 import net.sanberdir.wizardrydelight.common.entity.chicken.custom.FeatherChicken;
 import net.sanberdir.wizardrydelight.common.entity.chicken.custom.FeatherChicken2;
 import net.sanberdir.wizardrydelight.common.entity.fat_pig.custom.FatPig;
+import net.sanberdir.wizardrydelight.common.entity.gold_sheep.custom.GoldSheep;
+import net.sanberdir.wizardrydelight.common.entity.gold_sheep.custom.GoldSheep2;
 import net.sanberdir.wizardrydelight.common.entity.wool_cow.custom.WoolCow;
 import net.sanberdir.wizardrydelight.common.entity.wool_cow.custom.WoolCow2;
 import net.sanberdir.wizardrydelight.common.particle.ModParticles;
@@ -786,6 +788,50 @@ public class HitByEntity {
             if (world instanceof ServerLevel _level)
                 _level.sendParticles(ModParticles.ROBIN_STAR_PARTICLES_PROJECTILE.get(), x, y, z, 36, 0.5, 0.5, 0.5, 0.05f);
         } else if ((entity instanceof LivingEntity _livEnt ? _livEnt.isBaby() : false) && !world.getEntitiesOfClass(Sheep.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).isEmpty()) {
+            if (!entity.level.isClientSide())
+                entity.discard();
+            if (world instanceof Level _level) {
+                if (!_level.isClientSide()) {
+                    _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.sheep.death")), SoundSource.NEUTRAL, 1, 1);
+                } else {
+                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.sheep.death")), SoundSource.NEUTRAL, 1, 1, false);
+                }
+            }
+            if (world instanceof ServerLevel _level)
+                _level.sendParticles(ModParticles.ROBIN_STAR_PARTICLES_PROJECTILE.get(), x, y, z, 36, 0.5, 0.5, 0.5, 0.05f);
+        }
+        if (!(entity instanceof LivingEntity _livEnt ? _livEnt.isBaby() : false) && !world.getEntitiesOfClass(GoldSheep.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).isEmpty()) {
+            if (!entity.level.isClientSide())
+                entity.discard();
+            if (world instanceof Level _level) {
+                if (!_level.isClientSide()) {
+                    _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.sheep.death")), SoundSource.NEUTRAL, 1, 1);
+                } else {
+                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.sheep.death")), SoundSource.NEUTRAL, 1, 1, false);
+                }
+            }
+            if (world instanceof Level _level && !_level.isClientSide()) {
+                ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.COOKED_MUTTON));
+                entityToSpawn.setPickUpDelay(10);
+                _level.addFreshEntity(entityToSpawn);
+            }
+            if (Math.random() < 0.35) {
+                if (world instanceof Level _level && !_level.isClientSide()) {
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.SPARKLING_POLLEN.get()));
+                    entityToSpawn.setPickUpDelay(10);
+                    _level.addFreshEntity(entityToSpawn);
+                }
+            }
+            if (Math.random() < 0.15) {
+                if (world instanceof Level _level && !_level.isClientSide()) {
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.GOLDEN_RUNO.get()));
+                    entityToSpawn.setPickUpDelay(10);
+                    _level.addFreshEntity(entityToSpawn);
+                }
+            }
+            if (world instanceof ServerLevel _level)
+                _level.sendParticles(ModParticles.ROBIN_STAR_PARTICLES_PROJECTILE.get(), x, y, z, 36, 0.5, 0.5, 0.5, 0.05f);
+        } else if ((entity instanceof LivingEntity _livEnt ? _livEnt.isBaby() : false) && !world.getEntitiesOfClass(GoldSheep.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).isEmpty()) {
             if (!entity.level.isClientSide())
                 entity.discard();
             if (world instanceof Level _level) {

@@ -129,6 +129,8 @@ public class WizardryDelight
         event.enqueueWork(() -> {
             InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
                     () ->  SlotTypePreset.RING.getMessageBuilder().build());
+            InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
+                    () ->  SlotTypePreset.NECKLACE.getMessageBuilder().build());
             WoodType.register(ModWoodType.APPLE_WOOD);
         });
     }

@@ -45,19 +45,19 @@ public class WoolCow extends Animal implements IAnimatable, Shearable, net.minec
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.3f).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.20f).build();
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.2D));
         this.goalSelector.addGoal(1, new ClimbOnTopOfPowderSnowGoal(this, this.level));
-        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.of(Items.WHEAT), false));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.of(InitItemsWD.COASTAL_STEEP_FIBERS.get()), false));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.of(InitItemsWD.COASTAL_STEEP_FLOWER.get()), false));
-        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 1.2D));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.2D, Ingredient.of(Items.WHEAT), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.2D, Ingredient.of(InitItemsWD.COASTAL_STEEP_FIBERS.get()), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.2D, Ingredient.of(InitItemsWD.COASTAL_STEEP_FLOWER.get()), false));
+        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.2D));
 
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));

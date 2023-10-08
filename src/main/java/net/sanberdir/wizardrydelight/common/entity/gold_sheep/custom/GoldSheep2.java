@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -30,17 +31,20 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class GoldSheep2 extends GoldSheep {
+import javax.annotation.Nullable;
+
+public class GoldSheep2 extends Animal implements IAnimatable, Shearable, net.minecraftforge.common.IForgeShearable {
     private AnimationFactory factory = new AnimationFactory(this);
 
-    public GoldSheep2(EntityType<? extends Animal> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public GoldSheep2(EntityType<? extends Animal> p_27557_, Level p_27558_) {
+        super(p_27557_, p_27558_);
     }
+
 
     public static AttributeSupplier setAttributes() {
         return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 20.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.3f).build();
+                .add(Attributes.MAX_HEALTH, 10.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.2f).build();
     }
     public static void plusWool(LevelAccessor world, double x, double y, double z, Entity entity) {
         if (entity == null)
@@ -49,7 +53,7 @@ public class GoldSheep2 extends GoldSheep {
             if (!entity.level.isClientSide())
                 entity.discard();
             if (world instanceof ServerLevel _level) {
-                Entity entityToSpawn = new GoldSheep2(ModEntityTypesWD.GOLD_SHEEP2.get(), _level);
+                Entity entityToSpawn = new GoldSheep(ModEntityTypesWD.GOLD_SHEEP.get(), _level);
                 entityToSpawn.moveTo(x, y, z, world.getRandom().nextFloat() * 360F, 0);
                 if (entityToSpawn instanceof Mob _mobToSpawn)
                     _mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
@@ -61,7 +65,7 @@ public class GoldSheep2 extends GoldSheep {
     @Override
     public void baseTick() {
         super.baseTick();
-        if (Math.random() <= 0.04) {
+        if (Math.random() <= 0.01) {
             plusWool(this.level, this.getX(), this.getY(), this.getZ(), this);
         }
     }
@@ -160,37 +164,27 @@ public class GoldSheep2 extends GoldSheep {
                 ||itemStack.is(Items.WHEAT);
 
     }
-    public boolean canMate(Animal animal) {
-        if (animal == this) {
-            return false;
-        } else if (!(animal instanceof GoldSheep) && !(animal instanceof GoldSheep2)) {
-            return false;
-        } else {
-            return true;
-        }
+
+
+    public boolean canMate(Animal p_29381_) {
+        return false;
     }
 
-    public GoldSheep getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        GoldSheep goldsheep;
-        if (ageableMob instanceof GoldSheep2) {
-            goldsheep = ModEntityTypesWD.GOLD_SHEEP2.get().create(serverLevel);
-        }
-        else if (ageableMob instanceof GoldSheep) {
-            goldsheep = ModEntityTypesWD.GOLD_SHEEP2.get().create(serverLevel);
-        }else {
-            goldsheep = (GoldSheep) ageableMob;
-            GoldSheep GoldSheep;
-            GoldSheep = ModEntityTypesWD.GOLD_SHEEP2.get().create(serverLevel);
-
-
-            net.sanberdir.wizardrydelight.common.entity.gold_sheep.custom.GoldSheep goldsheep1 = GoldSheep;
-        }
-
-        this.setAttributes();
-        return goldsheep;
+    @Nullable
+    public AgeableMob getBreedOffspring(ServerLevel p_148993_, AgeableMob p_148994_) {
+        return null;
     }
-
     protected float getStandingEyeHeight(Pose p_28295_, EntityDimensions p_28296_) {
         return this.isBaby() ? p_28296_.height * 0.95F : 1.3F;
+    }
+
+    @Override
+    public void shear(SoundSource p_21749_) {
+
+    }
+
+    @Override
+    public boolean readyForShearing() {
+        return false;
     }
 }
