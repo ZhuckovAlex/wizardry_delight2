@@ -1075,6 +1075,33 @@ public class CatInteractProcedure {
                 }
             }
         }
+        if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == ModItems.STUFFED_PUMPKIN.get()) {
+            if (sourceentity instanceof Player _player) {
+                ItemStack _stktoremove = new ItemStack(ModItems.STUFFED_PUMPKIN.get());
+                _player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+            }
+            if (Math.random() < 0.15) {
+                if (world instanceof Level _level && !_level.isClientSide()) {
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.A_DROP_OF_LOVE.get()));
+                    entityToSpawn.setPickUpDelay(10);
+                    _level.addFreshEntity(entityToSpawn);
+                }
+                if (world instanceof ServerLevel _level)
+                    _level.sendParticles(ParticleTypes.HAPPY_VILLAGER, x, y, z, 20, 0.2, 0.2, 0.2, 0.2);
+                if (world instanceof Level _level) {
+                    if (!_level.isClientSide())
+                        _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.cat.purreow")), SoundSource.NEUTRAL, 1, 1);
+                }
+            }
+            else {
+                if (world instanceof ServerLevel _level)
+                    _level.sendParticles(ParticleTypes.LARGE_SMOKE, x, y, z, 10, 0.2, 0.2, 0.2, 0.2);
+                if (world instanceof Level _level) {
+                    if (!_level.isClientSide())
+                        _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.cat.hiss")), SoundSource.NEUTRAL, 1, 1);
+                }
+            }
+        }
         if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == ModItems.COOKED_RICE.get()) {
             if (sourceentity instanceof Player _player) {
                 ItemStack _stktoremove = new ItemStack(ModItems.COOKED_RICE.get());
