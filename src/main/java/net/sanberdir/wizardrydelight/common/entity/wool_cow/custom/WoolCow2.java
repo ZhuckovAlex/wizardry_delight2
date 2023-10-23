@@ -85,23 +85,6 @@ public class WoolCow2 extends WoolCow {
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
     }
 
-    protected void customServerAiStep() {
-        this.eatAnimationTick = this.eatBlockGoal.getEatAnimationTick();
-        super.customServerAiStep();
-    }
-    public void aiStep() {
-        if (this.level.isClientSide) {
-            this.eatAnimationTick = Math.max(0, this.eatAnimationTick - 1);
-        }
-
-        super.aiStep();
-    }
-    private int eatAnimationTick;
-    private EatBlockGoal eatBlockGoal;
-
-
-
-
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.wool_cow.idle", true));

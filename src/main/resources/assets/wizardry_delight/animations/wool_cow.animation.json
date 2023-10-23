@@ -46,7 +46,8 @@
 			}
 		},
 		"animation.wool_cow.walk": {
-			"loop": true
+			"loop": true,
+			"animation_length": 0.83333
 		}
 	},
 	"geckolib_format_version": 2

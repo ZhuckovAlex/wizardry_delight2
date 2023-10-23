@@ -6,29 +6,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "wizardry_delight:golden_runo",
-          "conditions": [
-            {
-              "condition": "minecraft:random_chance",
-              "chance": 0.05
-            },
-            {
-              "condition": "minecraft:damage_source_properties",
-              "predicate": {
-                "source_entity": {
-                  "type": "minecraft:player",
-                  "equipment": {
-                    "mainhand": {
-                      "tag": "wizardry_delight:knifes"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
           "functions": [
             {
               "add": false,

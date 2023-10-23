@@ -27,6 +27,12 @@ public class InitItemsWD {
             DeferredRegister.create(ForgeRegistries.ITEMS, WizardryDelight.MOD_ID);
     public static final RegistryObject<Item> EGG_OF_A_MOTTLED_CHICKEN = ITEMS.register("egg_of_a_mottled_chicken",
             () -> new EggMottled(new Item.Properties().tab(ModCreativeTab.BUSHES).stacksTo(16)));
+    public static final RegistryObject<Item> RING_RESERVATION_LIFE = ITEMS.register("ring_reservation_life",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+    public static final RegistryObject<Item> RING_RESERVATION_LIFE_CHARGED = ITEMS.register("ring_reservation_life_charged",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SOUL_CORE = ITEMS.register("soul_core",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> BLACKSTONE_ROD = ITEMS.register("blackstone_rod",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> BLACKSTONE_CORE = ITEMS.register("blackstone_core",
@@ -41,7 +47,7 @@ public class InitItemsWD {
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(12).saturationMod(0.6f)
                     .effect(new MobEffectInstance(ModWDEffects.TASTY_FOOD.get(), 900, 0), 1F)
                     .build())));
-    public static final RegistryObject<Item> BEAR_NEAT_SOUP = ITEMS.register("bear_meat_soup",
+    public static final RegistryObject<Item> BEAR_MEAT_SOUP = ITEMS.register("bear_meat_soup",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(7).saturationMod(0.4f)
                     .effect(new MobEffectInstance(ModEffects.COMFORT.get(), 1200, 0), 1F)
                     .build())));
@@ -153,7 +159,8 @@ public class InitItemsWD {
                     .food(new FoodProperties.Builder().nutrition(20).saturationMod(1).alwaysEat()
                             .effect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1F)
                             .build())));
-
+    public static final RegistryObject<Item> WIZARD_PIE = ITEMS.register("wizard_pie",
+            () -> new ItemNameBlockItem(InitBlocksWD.WIZARD_PIE.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
     public static final RegistryObject<Item> WD_SPAWNER = ITEMS.register("wd_spawner",
             () -> new ItemNameBlockItem(InitBlocksWD.WD_SPAWNER.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
     public static final RegistryObject<Item> SOUL_STONE_CHARGED = ITEMS.register("soul_stone_charged",
@@ -308,9 +315,9 @@ public class InitItemsWD {
     public static final RegistryObject<Item> SHPIKACHKI = ITEMS.register("shpikachki",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build())));
-    public static final RegistryObject<Item> COCKED_HUNTING_TWISTER = ITEMS.register("cocked_hunting_twister",
-            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
-                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(0.5F).build())));
+//    public static final RegistryObject<Item> COCKED_HUNTING_TWISTER = ITEMS.register("cocked_hunting_twister",
+//            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+//                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(0.5F).build())));
     public static final RegistryObject<Item> COCKED_SHPIKACHKI = ITEMS.register("cocked_shpikachki",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
                     .food(new FoodProperties.Builder().nutrition(6).saturationMod(0.5F).build())));
