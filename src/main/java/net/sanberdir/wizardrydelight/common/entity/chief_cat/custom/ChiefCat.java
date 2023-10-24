@@ -358,6 +358,7 @@ public class ChiefCat extends TamableAnimal implements IAnimatable{
         Level world = this.level;
         CatInteractProcedure.execute(world, x, y, z, sourceentity);
         return retval;
+
     }
 
 
