@@ -12,19 +12,47 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BaseSpawner;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.SpawnData;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import net.sanberdir.wizardrydelight.WizardryDelight;
+import net.sanberdir.wizardrydelight.common.blocks.InitBlocksWD;
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 
 public class WDSpawnerEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+    public BaseSpawner getSpawner() {
+        return this.spawner;
+    }
+    private final BaseSpawner spawner = new BaseSpawner() {
+        public void broadcastEvent(Level p_155767_, BlockPos p_155768_, int p_155769_) {
+            p_155767_.blockEvent(p_155768_, InitBlocksWD.WD_SPAWNER.get(), p_155769_, 0);
+        }
+
+        public void setNextSpawnData(@Nullable Level p_155771_, BlockPos p_155772_, SpawnData p_155773_) {
+            super.setNextSpawnData(p_155771_, p_155772_, p_155773_);
+            if (p_155771_ != null) {
+                BlockState blockstate = p_155771_.getBlockState(p_155772_);
+                p_155771_.sendBlockUpdated(p_155772_, blockstate, blockstate, 4);
+            }
+
+        }
+
+        @org.jetbrains.annotations.Nullable
+        public net.minecraft.world.level.block.entity.BlockEntity getSpawnerBlockEntity(){ return WDSpawnerEntity.this; }
+    };
+
         private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(9, ItemStack.EMPTY);
         private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 

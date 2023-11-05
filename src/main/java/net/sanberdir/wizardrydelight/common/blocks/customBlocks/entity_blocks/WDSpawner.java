@@ -32,6 +32,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -57,7 +58,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class WDSpawner extends Block implements EntityBlock {
-
 
     public static final int MIN_POLLEN = 0;
     public static final int MAX_POLLEN = 5;
@@ -214,6 +214,20 @@ public class WDSpawner extends Block implements EntityBlock {
                     if (world instanceof ServerLevel _level)
                         _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
                                 "summon wizardry_delight:fat_pig ~0.5 ~1 ~0.5");
+                }
+            }
+            if ((new Object() {
+                public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+                    BlockEntity blockEntity = world.getBlockEntity(pos);
+                    if (blockEntity != null)
+                        return blockEntity.getPersistentData().getString(tag);
+                    return "";
+                }
+            }.getValue(world, new BlockPos(x, y, z), "getEntity1")).equals("minecraft:cat")) {
+                if (Math.random() <= 0.06) {
+                    if (world instanceof ServerLevel _level)
+                        _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+                                "summon wizardry_delight:chief_cat ~0.5 ~1 ~0.5");
                 }
             }
 

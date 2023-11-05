@@ -57,14 +57,15 @@ public class StrikeRobinStick {
             }
         }.checkGamemode(entity)) && ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).getDamageValue() < 69) {
 
-            {
-                ItemStack _ist = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
-                if (_ist.hurt(1, RandomSource.create(), null)) {
-                    _ist.shrink(1);
-                    _ist.setDamageValue(0);
-                }
-            }
+
             if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.ROBIN_STICK.get().asItem()) {
+                {
+                    ItemStack _ist = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+                    if (_ist.hurt(1, RandomSource.create(), null)) {
+                        _ist.shrink(1);
+                        _ist.setDamageValue(0);
+                    }
+                }
                 world.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("wizardry_delight:robin_stick")), SoundSource.NEUTRAL, 1, 1);
                 {
                     Entity _shootFrom = entity;

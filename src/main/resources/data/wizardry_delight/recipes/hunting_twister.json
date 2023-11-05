@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "shpikachki",
+  "ingredients": [
+    {
+      "item": "wizardry_delight:shpikachki"
+    },
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "minecraft:bread"
+    }
+  ],
+  "result": {
+    "item": "wizardry_delight:hunting_twister",
+    "count": 3
+  }
+}

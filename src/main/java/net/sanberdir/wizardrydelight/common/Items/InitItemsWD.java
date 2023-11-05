@@ -28,15 +28,15 @@ public class InitItemsWD {
     public static final RegistryObject<Item> EGG_OF_A_MOTTLED_CHICKEN = ITEMS.register("egg_of_a_mottled_chicken",
             () -> new EggMottled(new Item.Properties().tab(ModCreativeTab.BUSHES).stacksTo(16)));
     public static final RegistryObject<Item> RING_RESERVATION_LIFE = ITEMS.register("ring_reservation_life",
-            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+            () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> RING_RESERVATION_LIFE_CHARGED = ITEMS.register("ring_reservation_life_charged",
-            () -> new Item(new Item.Properties()));
+            () -> new RingReturnLive(new Item.Properties().durability(3)));
     public static final RegistryObject<Item> SOUL_CORE = ITEMS.register("soul_core",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
-    public static final RegistryObject<Item> BLACKSTONE_ROD = ITEMS.register("blackstone_rod",
-            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
-    public static final RegistryObject<Item> BLACKSTONE_CORE = ITEMS.register("blackstone_core",
-            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+//    public static final RegistryObject<Item> BLACKSTONE_ROD = ITEMS.register("blackstone_rod",
+//            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+//    public static final RegistryObject<Item> BLACKSTONE_CORE = ITEMS.register("blackstone_core",
+//            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> SILVERAN = ITEMS.register("silveran",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> THE_MACE_OF_MURDERER = ITEMS.register("the_mace_of_murderer",
@@ -52,11 +52,11 @@ public class InitItemsWD {
                     .effect(new MobEffectInstance(ModEffects.COMFORT.get(), 1200, 0), 1F)
                     .build())));
     public static final RegistryObject<Item> SPAGHETTI_IN_THE_NORTH = ITEMS.register("spaghetti_in_the_north",
-            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(8).saturationMod(0.5f)
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(12).saturationMod(0.5f)
                     .effect(new MobEffectInstance(ModEffects.COMFORT.get(), 900, 0), 1F)
                     .build())));
     public static final RegistryObject<Item> GOULASH_WITH_GOAT_MEAT = ITEMS.register("goulash_with_goat_meat",
-            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(6).saturationMod(0.8f)
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(10).saturationMod(0.8f)
                     .effect(new MobEffectInstance(ModEffects.COMFORT.get(), 900, 0), 1F)
                     .build())));
     public static final RegistryObject<Item> HOT_COCOA_WITH_SPARKING_POLLEN = ITEMS.register("hot_cocoa_with_sparkling_pollen",
@@ -104,7 +104,7 @@ public class InitItemsWD {
     public static final RegistryObject<Item> THE_PILLAGERS_CHEST = ITEMS.register("the_pillagers_chest",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> RAPIER = ITEMS.register("rapier",
-            () -> new SwordItem(Tiers.NETHERITE, -2,-1.6f,new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES)));
+            () -> new SwordItem(Tiers.NETHERITE, -2,-1f,new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> GOLDEN_CHEST_KING_PILLAGER = ITEMS.register("golden_chest_king_pillager",
             () -> new SneakItemGold(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> HEALING_DEW = ITEMS.register("healing_dew",
@@ -310,6 +310,9 @@ public class InitItemsWD {
             () -> new KrutnevyBread(new Item.Properties().tab(ModCreativeTab.BUSHES)
                     .food(new FoodProperties.Builder().nutrition(8).saturationMod(0.5F).build())));
     public static final RegistryObject<Item> HUNTING_TWISTER = ITEMS.register("hunting_twister",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build())));
+    public static final RegistryObject<Item> PEPPER = ITEMS.register("pepper",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build())));
     public static final RegistryObject<Item> SHPIKACHKI = ITEMS.register("shpikachki",

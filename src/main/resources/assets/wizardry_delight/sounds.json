@@ -35,6 +35,14 @@
       }
     ]
   },
+  "necro_decay_effect_finish": {
+    "subtitle": "sounds.wizardry_delight.necro_decay_effect_finish",
+    "sounds": [
+      {
+        "name": "wizardry_delight:necro_decay_effect_finish"
+      }
+    ]
+  },
   "wizardry_delight_jam": {
     "subtitle": "sounds.wizardry_delight.wizardry_delight_jam",
     "sounds": [
