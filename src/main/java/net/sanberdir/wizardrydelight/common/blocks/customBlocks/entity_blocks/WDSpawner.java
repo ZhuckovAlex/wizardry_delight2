@@ -83,7 +83,7 @@ public class WDSpawner extends Block implements EntityBlock {
                 _blockEntity.getPersistentData().putString("getEntity1", ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getString("entity")));
             if (world instanceof Level _level)
                 _level.sendBlockUpdated(_bp, _bs, _bs, 3);
-        }entity.getPersistentData().putString("id", (new Object() {
+        }entity.getPersistentData().putString("getEntity1", (new Object() {
             public String getValue(LevelAccessor world, BlockPos pos, String tag) {
                 BlockEntity blockEntity = world.getBlockEntity(pos);
                 if (blockEntity != null)
