@@ -78,9 +78,9 @@ public class RingReturnLiveProcedure {
             }
         }
         if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-            _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 240, 2, false, false));
+            _entity.addEffect(new MobEffectInstance(MobEffects.HEAL, 3, 0, false, false));
         if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-            _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 240, 1, false, false));
+            _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 300, 1, false, false));
 
     }
 }
