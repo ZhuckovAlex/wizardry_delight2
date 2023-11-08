@@ -286,7 +286,7 @@ public class InitItemsWD {
     public static final RegistryObject<Item> JAR = ITEMS.register("jar",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> GOLDEN_RUNO = ITEMS.register("golden_runo",
-            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+            () -> new GoldenRuno(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> POISON_BERRY_JAM = ITEMS.register("poison_berry_jam",
             () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(6).saturationMod(0.8f)
                     .effect(new MobEffectInstance(MobEffects.POISON, 100, 0), 1F)

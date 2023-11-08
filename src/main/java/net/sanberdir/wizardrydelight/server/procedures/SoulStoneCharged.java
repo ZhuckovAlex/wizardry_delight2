@@ -8,9 +8,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.sanberdir.wizardrydelight.WizardryDelight;
 import net.sanberdir.wizardrydelight.common.Items.InitItemsWD;
 import net.sanberdir.wizardrydelight.common.blocks.InitBlocksWD;
@@ -26,14 +28,29 @@ public class SoulStoneCharged {
 
         if ((world.getBlockState(new BlockPos(x, y, z))) == InitBlocksWD.ROSE_OF_THE_MURDERER2.get().defaultBlockState() && (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == WizardryDelight.SOUL_STONE_DISCHARGED.get()) {
 
+            if (entity instanceof Player _player) {
+                ItemStack _stktoremove = new ItemStack(WizardryDelight.SOUL_STONE_DISCHARGED.get());
+                _player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+            }
             if (entity instanceof LivingEntity _entity) {
                 ItemStack _setstack = new ItemStack(InitItemsWD.SOUL_STONE_CHARGED.get());
                 _setstack.setCount(1);
-                _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
+                _entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
                 if (_entity instanceof Player _player)
                     _player.getInventory().setChanged();
             }
-            (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putString("entity", (new Object() {
+            if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.SOUL_STONE_CHARGED.get()) {
+                if (entity instanceof Player _player) {
+                    ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY);
+                    _setstack.setCount(1);
+                    ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+                }
+
+            }
+
+
+
+            (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().putString("entity", (new Object() {
                 public String getValue(LevelAccessor world, BlockPos pos, String tag) {
                     BlockEntity blockEntity = world.getBlockEntity(pos);
                     if (blockEntity != null)
@@ -41,7 +58,7 @@ public class SoulStoneCharged {
                     return "";
                 }
             }.getValue(world, new BlockPos(x, y, z), "entity")));
-            (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putString("name_entity", (new Object() {
+            (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().putString("name_entity", (new Object() {
                 public String getValue(LevelAccessor world, BlockPos pos, String tag) {
                     BlockEntity blockEntity = world.getBlockEntity(pos);
                     if (blockEntity != null)
@@ -66,6 +83,13 @@ public class SoulStoneCharged {
                 world.setBlock(_bp, _bs, 3);
             }
 
+        }
+        if (entity instanceof LivingEntity _entity) {
+            ItemStack _setstack = new ItemStack(Blocks.AIR);
+            _setstack.setCount(1);
+            _entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
+            if (_entity instanceof Player _player)
+                _player.getInventory().setChanged();
         }
     }
 }

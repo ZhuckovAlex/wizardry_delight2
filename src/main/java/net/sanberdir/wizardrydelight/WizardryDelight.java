@@ -96,7 +96,7 @@ public class WizardryDelight
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
     // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
-    public static final RegistryObject<Item> SOUL_STONE_DISCHARGED = ITEMS.register("soul_stone_discharged", () -> new SoulStoneDeactive(new Item.Properties().stacksTo(1).tab(ModCreativeTab.BUSHES)));
+    public static final RegistryObject<Item> SOUL_STONE_DISCHARGED = ITEMS.register("soul_stone_discharged", () -> new SoulStoneDeactive(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> MAG_ELITRA =  ITEMS.register("mag_elitra", () ->new ModElytra(ModArmorMaterials.ELITRA, EquipmentSlot.CHEST, new Item.Properties().durability(1200).tab(ModCreativeTab.BUSHES).fireResistant()));
 
    public WizardryDelight()
@@ -128,6 +128,8 @@ public class WizardryDelight
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         event.enqueueWork(() -> {
+            InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
+                    () ->  SlotTypePreset.RING.getMessageBuilder().build());
             InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
                     () ->  SlotTypePreset.RING.getMessageBuilder().build());
             InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
