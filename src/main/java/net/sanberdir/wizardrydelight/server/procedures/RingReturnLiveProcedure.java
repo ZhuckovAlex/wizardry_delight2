@@ -6,6 +6,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -45,42 +46,40 @@ public class RingReturnLiveProcedure {
     private static void returnLive(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
         if (entity == null)
             return;
-        if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.RING_RESERVATION_LIFE_CHARGED.get()) {
-            if (entity instanceof LivingEntity _entity)
-                _entity.setHealth(1);
-            if (event != null && event.isCancelable()) {
-                event.setCanceled(true);
-            }
-            if (world instanceof Level _level) {
-                if (!_level.isClientSide()) {
-                    _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("wizardry_delight:necro_decay_effect_finish")), SoundSource.NEUTRAL, 1, 1);
-                } else {
-                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("wizardry_delight:necro_decay_effect_finish")), SoundSource.NEUTRAL, 1, 1, false);
+        if (entity instanceof LivingEntity lv) {
+            CuriosApi.getCuriosHelper().findCurios(lv, InitItemsWD.RING_RESERVATION_LIFE_CHARGED.get()).forEach(item -> {
+                ItemStack itemstackiterator = item.stack();
+                {
+                    ItemStack _ist = itemstackiterator;
+                    if (_ist.hurt(1, RandomSource.create(), null)) {
+                        _ist.shrink(1);
+                        _ist.setDamageValue(0);
+                    }
                 }
-            }
-            if (world instanceof ServerLevel _level)
-                _level.sendParticles(ParticleTypes.HEART, x, y, z, 10, 0.4, 0.4, 0.4, 0.2);
-            {
-                ItemStack _ist = (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY);
-                if (_ist.hurt(1, RandomSource.create(), null)) {
-                    _ist.shrink(1);
-                    _ist.setDamageValue(0);
+                if (event != null && event.isCancelable()) {
+                    event.setCanceled(true);
                 }
-            }
-            if (((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)).getDamageValue() < 1) {
-                if (entity instanceof LivingEntity _entity) {
-                    ItemStack _setstack = new ItemStack(InitItemsWD.RING_RESERVATION_LIFE.get());
-                    _setstack.setCount(1);
-                    _entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
-                    if (_entity instanceof Player _player)
-                        _player.getInventory().setChanged();
+                if (entity instanceof LivingEntity _entity)
+                    _entity.setHealth(1);
+                if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+                    _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 300, 1, false, false));
+                if (world instanceof ServerLevel _level)
+                    _level.sendParticles(ParticleTypes.HEART, x, y, z, 15, 1, 1, 1, 1);
+                if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+                    _entity.addEffect(new MobEffectInstance(MobEffects.HEAL, 3, 0, false, false));
+                if (world instanceof Level _level) {
+                    if (!_level.isClientSide()) {
+                        _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("wizardry_delight:necro_decay_effect_finish")), SoundSource.NEUTRAL, 1, 1);
+                    }
                 }
-            }
+                if ((itemstackiterator).getDamageValue() == (itemstackiterator).getMaxDamage()) {
+                    if (entity instanceof Player _player) {
+                        ItemStack _setstack = new ItemStack(InitItemsWD.RING_RESERVATION_LIFE.get());
+                        _setstack.setCount(1);
+                        ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+                    }
+                }
+            });
         }
-        if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-            _entity.addEffect(new MobEffectInstance(MobEffects.HEAL, 3, 0, false, false));
-        if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-            _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 300, 1, false, false));
-
     }
 }

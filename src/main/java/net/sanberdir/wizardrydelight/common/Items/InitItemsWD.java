@@ -30,7 +30,7 @@ public class InitItemsWD {
     public static final RegistryObject<Item> RING_RESERVATION_LIFE = ITEMS.register("ring_reservation_life",
             () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> RING_RESERVATION_LIFE_CHARGED = ITEMS.register("ring_reservation_life_charged",
-            () -> new RingReturnLive(new Item.Properties().durability(3)));
+            () -> new Item(new Item.Properties().durability(3)));
     public static final RegistryObject<Item> SOUL_CORE = ITEMS.register("soul_core",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
 //    public static final RegistryObject<Item> BLACKSTONE_ROD = ITEMS.register("blackstone_rod",
@@ -164,7 +164,7 @@ public class InitItemsWD {
     public static final RegistryObject<Item> WD_SPAWNER = ITEMS.register("wd_spawner",
             () -> new ItemNameBlockItem(InitBlocksWD.WD_SPAWNER.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
     public static final RegistryObject<Item> SOUL_STONE_CHARGED = ITEMS.register("soul_stone_charged",
-            () -> new SoulStoneActive(new Item.Properties().craftRemainder(WizardryDelight.SOUL_STONE_DISCHARGED.get()).stacksTo(1)));
+            () -> new SoulStoneActive(new Item.Properties().craftRemainder(WizardryDelight.SOUL_STONE_DISCHARGED.get())));
     public static final RegistryObject<Item> HAT_HELMET = ITEMS.register("hat_helmet",
             () -> new HatArmorItem(ModArmorMaterials.HAT, EquipmentSlot.HEAD,
                     new Item.Properties().durability(105).tab(ModCreativeTab.BUSHES)));
@@ -247,6 +247,8 @@ public class InitItemsWD {
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> RING_SUPPLY = ITEMS.register("ring_supply",
             () -> new RingSupply(new Item.Properties().stacksTo(1).durability(40).tab(ModCreativeTab.BUSHES).fireResistant()));
+    public static final RegistryObject<Item> RING_SUPPLY_DISCHARGED = ITEMS.register("ring_supply_discharged",
+            () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeTab.BUSHES).fireResistant()));
 
     public static final RegistryObject<Item> MUSHROOM_ON_STICK = ITEMS.register("mushroom_on_stick",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(2).saturationMod(0.3f).alwaysEat()

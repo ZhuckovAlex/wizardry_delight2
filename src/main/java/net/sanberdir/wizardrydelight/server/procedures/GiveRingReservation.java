@@ -45,7 +45,9 @@ public class GiveRingReservation {
         if (entity == null)
             return;
         if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.SOUL_STONE_CHARGED.get()
-                && (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.RING_RESERVATION_LIFE.get().asItem()) {
+                && (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.RING_RESERVATION_LIFE.get().asItem()
+                || (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.SOUL_STONE_CHARGED.get()
+                && (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.RING_RESERVATION_LIFE_CHARGED.get().asItem()) {
 
             if (entity instanceof LivingEntity _entity) {
                 ItemStack _setstack = new ItemStack(WizardryDelight.SOUL_STONE_DISCHARGED.get());
@@ -58,6 +60,40 @@ public class GiveRingReservation {
                 ItemStack _setstack = new ItemStack(InitItemsWD.RING_RESERVATION_LIFE_CHARGED.get());
                 _setstack.setCount(1);
                 _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
+                if (_entity instanceof Player _player)
+                    _player.getInventory().setChanged();
+            }
+            if (world instanceof Level _level) {
+                if (!_level.isClientSide()) {
+                    _level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.thunder")), SoundSource.NEUTRAL, 2, 1);
+                } else {
+                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.thunder")), SoundSource.NEUTRAL, 2, 1, false);
+                }
+            }
+            if (world instanceof ServerLevel _level) {
+                LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
+                entityToSpawn.moveTo(Vec3.atBottomCenterOf(new BlockPos(x, y, z)));
+                entityToSpawn.setVisualOnly(true);
+                _level.addFreshEntity(entityToSpawn);
+            }
+
+        }
+        if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.SOUL_STONE_CHARGED.get()
+                && (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.RING_RESERVATION_LIFE.get().asItem()
+                || (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.SOUL_STONE_CHARGED.get()
+                && (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == InitItemsWD.RING_RESERVATION_LIFE_CHARGED.get().asItem()) {
+
+            if (entity instanceof LivingEntity _entity) {
+                ItemStack _setstack = new ItemStack(WizardryDelight.SOUL_STONE_DISCHARGED.get());
+                _setstack.setCount(1);
+                _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
+                if (_entity instanceof Player _player)
+                    _player.getInventory().setChanged();
+            }
+            if (entity instanceof LivingEntity _entity) {
+                ItemStack _setstack = new ItemStack(InitItemsWD.RING_RESERVATION_LIFE_CHARGED.get());
+                _setstack.setCount(1);
+                _entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
                 if (_entity instanceof Player _player)
                     _player.getInventory().setChanged();
             }

@@ -16,13 +16,17 @@ import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -53,6 +57,7 @@ import net.sanberdir.wizardrydelight.common.blocks.InitBlocksWD;
 import net.sanberdir.wizardrydelight.common.blocks.ModEntitiesBlock;
 import net.sanberdir.wizardrydelight.common.blocks.customBlocks.entity_blocks.AppleSign;
 import net.sanberdir.wizardrydelight.common.blocks.customBlocks.entity_blocks.AppleWallSign;
+import net.sanberdir.wizardrydelight.common.custom_minecraft_recipes.brewing.BetterBrewingRecipe;
 import net.sanberdir.wizardrydelight.common.customeffect.ModWDEffects;
 import net.sanberdir.wizardrydelight.common.entity.ModBlockEntities;
 import net.sanberdir.wizardrydelight.common.entity.ModEntities;
@@ -203,6 +208,10 @@ public class WizardryDelight
                 ComposterBlock.COMPOSTABLES.put(InitItemsWD.COASTAL_STEEP.get(), 0.2f);
                 ComposterBlock.COMPOSTABLES.put(InitItemsWD.MEDICAL_POTATO.get(), 0.2f);
 
+            });
+            event.enqueueWork(() -> {
+                BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.WATER,
+                        InitItemsWD.WARPED_WART.get(), Potions.AWKWARD));
             });
         }
     }
