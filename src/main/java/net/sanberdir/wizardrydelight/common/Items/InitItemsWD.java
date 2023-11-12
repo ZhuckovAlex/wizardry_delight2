@@ -246,7 +246,7 @@ public class InitItemsWD {
     public static final RegistryObject<Item> SPARKLING_POLLEN = ITEMS.register("sparkling_pollen",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> RING_SUPPLY = ITEMS.register("ring_supply",
-            () -> new RingSupply(new Item.Properties().durability(40).tab(ModCreativeTab.BUSHES).fireResistant()));
+            () -> new RingSupply(new Item.Properties().durability(40).fireResistant()));
     public static final RegistryObject<Item> RING_SUPPLY_DISCHARGED = ITEMS.register("ring_supply_discharged",
             () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeTab.BUSHES).fireResistant()));
 
