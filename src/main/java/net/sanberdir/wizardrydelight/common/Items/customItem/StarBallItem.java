@@ -31,7 +31,7 @@ public class StarBallItem extends Item {
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
         if (Screen.hasShiftDown()) {
-            list.add(Component.translatable("wizardry_delight.press_shift").withStyle(ChatFormatting.DARK_GRAY));
+            list.add(Component.translatable("wizardry_delight.press_shift2").withStyle(ChatFormatting.DARK_GRAY));
             list.add(Component.translatable("wizardry_delight.robin_stick").withStyle(ChatFormatting.GOLD));
         }
         else {
