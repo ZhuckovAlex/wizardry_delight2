@@ -1,6 +1,9 @@
 package net.sanberdir.wizardrydelight.common.Items.customItem;
 
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -9,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.sanberdir.wizardrydelight.common.armor.ModArmorMaterials;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -20,6 +24,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.item.GeoArmorItem;
 
+import java.util.List;
 import java.util.Map;
 
 public class ClearHatArmorItem extends GeoArmorItem implements IAnimatable {
@@ -41,7 +46,16 @@ public class ClearHatArmorItem extends GeoArmorItem implements IAnimatable {
         data.addAnimationController(new AnimationController<ClearHatArmorItem>(this, "controller",
                 20, this::predicate));
     }
-
+    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, world, list, flag);
+        if (Screen.hasShiftDown()) {
+            list.add(Component.translatable("wizardry_delight.press_shift").withStyle(ChatFormatting.DARK_GRAY));
+            list.add(Component.translatable("wizardry_delight.hat_helmet_clear").withStyle(ChatFormatting.GOLD));
+        }
+        else {
+            list.add(Component.translatable("wizardry_delight.press_shift").withStyle(ChatFormatting.DARK_GRAY));
+        }
+    }
     @Override
     public AnimationFactory getFactory() {
         return this.factory;

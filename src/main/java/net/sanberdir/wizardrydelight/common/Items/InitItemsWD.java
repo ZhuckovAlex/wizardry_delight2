@@ -77,9 +77,9 @@ public class InitItemsWD {
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(1.7f)
                             .build())));
     public static final RegistryObject<Item>  NOT_PICKLED_SHISH_KEBAB = ITEMS.register("not_pickled_shish_kebab",
-            () -> new NotPickledKebab(new Item.Properties().durability(1500)));
+            () -> new NotPickledKebab(new Item.Properties().tab(ModCreativeTab.BUSHES).durability(1500)));
     public static final RegistryObject<Item>  PICKLED_SHISH_KEBAB = ITEMS.register("pickled_shish_kebab",
-            () -> new PickledKebab(new Item.Properties().tab(ModCreativeTab.BUSHES).craftRemainder(Items.FLOWER_POT)));
+            () -> new PickledKebab(new Item.Properties().craftRemainder(Items.FLOWER_POT)));
     public static final RegistryObject<Item>  GOAT_MEAT_KEBAB = ITEMS.register("goat_meat_kebab",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f)
@@ -108,7 +108,7 @@ public class InitItemsWD {
     public static final RegistryObject<Item> GOLDEN_CHEST_KING_PILLAGER = ITEMS.register("golden_chest_king_pillager",
             () -> new SneakItemGold(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> HEALING_DEW = ITEMS.register("healing_dew",
-            () -> new AnimateItem(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+            () -> new HealingDew(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> A_DROP_OF_LOVE = ITEMS.register("a_drop_of_love",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
 //Пластинка
@@ -162,9 +162,9 @@ public class InitItemsWD {
     public static final RegistryObject<Item> WIZARD_PIE = ITEMS.register("wizard_pie",
             () -> new ItemNameBlockItem(InitBlocksWD.WIZARD_PIE.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
     public static final RegistryObject<Item> WD_SPAWNER = ITEMS.register("wd_spawner",
-            () -> new ItemNameBlockItem(InitBlocksWD.WD_SPAWNER.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
+            () -> new WDSpawnerItem(InitBlocksWD.WD_SPAWNER.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
     public static final RegistryObject<Item> SOUL_STONE_CHARGED = ITEMS.register("soul_stone_charged",
-            () -> new SoulStoneActive(new Item.Properties().craftRemainder(WizardryDelight.SOUL_STONE_DISCHARGED.get())));
+            () -> new SoulStoneActive(new Item.Properties().stacksTo(1).craftRemainder(WizardryDelight.SOUL_STONE_DISCHARGED.get())));
     public static final RegistryObject<Item> HAT_HELMET = ITEMS.register("hat_helmet",
             () -> new HatArmorItem(ModArmorMaterials.HAT, EquipmentSlot.HEAD,
                     new Item.Properties().durability(105).tab(ModCreativeTab.BUSHES)));
@@ -205,7 +205,7 @@ public class InitItemsWD {
     public static final RegistryObject<Item> FIRE_STEM = ITEMS.register("fire_stem",
             () -> new ItemNameBlockItem(InitBlocksWD.FIRE_STEM.get(),(new Item.Properties().fireResistant().tab(ModCreativeTab.BUSHES))));
     public static final RegistryObject<Item> ROSE_OF_GHOSTY_TEARS = ITEMS.register("rose_of_ghosty_tears",
-            () -> new ItemNameBlockItem(InitBlocksWD.ROSE_OF_GHOSTY_TEARS.get(),(new Item.Properties().tab(ModCreativeTab.BUSHES).fireResistant())));
+            () -> new RoseGhostyTearsItem(InitBlocksWD.ROSE_OF_GHOSTY_TEARS.get(),(new Item.Properties().tab(ModCreativeTab.BUSHES).fireResistant())));
     public static final RegistryObject<Item> SPATIAL_ORCHID = ITEMS.register("spatial_orchid",
             () -> new ItemNameBlockItem(InitBlocksWD.SPATIAL_ORCHID.get(),(new Item.Properties().tab(ModCreativeTab.BUSHES))));
     public static final RegistryObject<Item> MEADOW_GOLDEN_FLOWER = ITEMS.register("meadow_golden_flower",
@@ -246,7 +246,7 @@ public class InitItemsWD {
     public static final RegistryObject<Item> SPARKLING_POLLEN = ITEMS.register("sparkling_pollen",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> RING_SUPPLY = ITEMS.register("ring_supply",
-            () -> new RingSupply(new Item.Properties().stacksTo(1).durability(40).tab(ModCreativeTab.BUSHES).fireResistant()));
+            () -> new RingSupply(new Item.Properties().durability(40).tab(ModCreativeTab.BUSHES).fireResistant()));
     public static final RegistryObject<Item> RING_SUPPLY_DISCHARGED = ITEMS.register("ring_supply_discharged",
             () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeTab.BUSHES).fireResistant()));
 
@@ -257,7 +257,7 @@ public class InitItemsWD {
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(5).saturationMod(0.6f).alwaysEat()
                     .build())));
     public static final RegistryObject<Item> ROSE_OF_THE_MURDERER = ITEMS.register("rose_of_the_murderer",
-            () -> new ItemNameBlockItem(InitBlocksWD.ROSE_OF_THE_MURDERER.get(),(new Item.Properties().tab(ModCreativeTab.BUSHES).fireResistant())));
+            () -> new RoseMurdererItem(InitBlocksWD.ROSE_OF_THE_MURDERER.get(),(new Item.Properties().tab(ModCreativeTab.BUSHES).fireResistant())));
     public static final RegistryObject<Item>  RAW_BEAR_MEET = ITEMS.register("raw_bear_meat",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f)
                     .effect(new MobEffectInstance(MobEffects.CONFUSION, 80, 0), 0.2F)
@@ -288,7 +288,7 @@ public class InitItemsWD {
     public static final RegistryObject<Item> JAR = ITEMS.register("jar",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> GOLDEN_RUNO = ITEMS.register("golden_runo",
-            () -> new GoldenRuno(new Item.Properties().tab(ModCreativeTab.BUSHES)));
+            () -> new GoldenRuno(new Item.Properties().tab(ModCreativeTab.BUSHES).stacksTo(1)));
     public static final RegistryObject<Item> POISON_BERRY_JAM = ITEMS.register("poison_berry_jam",
             () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(6).saturationMod(0.8f)
                     .effect(new MobEffectInstance(MobEffects.POISON, 100, 0), 1F)

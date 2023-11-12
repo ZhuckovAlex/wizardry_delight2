@@ -106,11 +106,11 @@ public class GoldSheep2 extends Animal implements IAnimatable, Shearable, net.mi
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.gold_sheep.idle", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.gold_sheep.walk", true));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.gold_sheep.walk", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.gold_sheep.idle", true));
         return PlayState.CONTINUE;
     }
 
