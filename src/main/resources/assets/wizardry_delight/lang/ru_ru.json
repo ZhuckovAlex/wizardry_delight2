@@ -191,5 +191,6 @@
   "itemGroup.wizardry_delight": "Wizardry delight",
   "wizardry_delight.progress_kebab": "§aМаринуется...",
   "wizardry_delight.result_kebab": "§aПромаринован",
-  "wizardry_delight.tag_entity_soul": "Захваченная душа:"
+  "wizardry_delight.tag_entity_soul": "Захваченная душа:",
+  "wizardry_delight.rose_murderer2": "After absorbing the mob's soul, the rose will change color and the soul can be captured with a soul stone"
 }
