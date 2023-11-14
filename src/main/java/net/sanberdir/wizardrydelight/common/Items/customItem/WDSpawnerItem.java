@@ -22,6 +22,8 @@ public class WDSpawnerItem extends ItemNameBlockItem {
             list.add(Component.translatable("wizardry_delight.wd_spawner1").withStyle(ChatFormatting.GOLD));
             list.add(Component.translatable("wizardry_delight.wd_spawner2").withStyle(ChatFormatting.GOLD));
             list.add(Component.translatable("wizardry_delight.wd_spawner3").withStyle(ChatFormatting.GOLD));
+            list.add(Component.translatable("wizardry_delight.wd_spawner4").withStyle(ChatFormatting.GOLD));
+            list.add(Component.translatable("wizardry_delight.wd_spawner5").withStyle(ChatFormatting.GOLD));
         }
         else {
             list.add(Component.translatable("wizardry_delight.press_shift").withStyle(ChatFormatting.DARK_GRAY));
