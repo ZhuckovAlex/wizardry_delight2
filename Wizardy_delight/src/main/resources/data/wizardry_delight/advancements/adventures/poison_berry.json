@@ -1,0 +1,37 @@
+{
+  "parent": "wizardry_delight:adventures/adventures_magic_cook",
+  "criteria": {
+    "poison_berry": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "wizardry_delight:poison_berry"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventures.poison_berry.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "wizardry_delight:poison_berry"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventures.poison_berry.title"
+    }
+  },
+  "requirements": [
+    [
+      "poison_berry"
+    ]
+  ]
+}
