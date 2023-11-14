@@ -19,8 +19,8 @@ public class RoseMurdererItem extends ItemNameBlockItem {
         super.appendHoverText(itemstack, world, list, flag);
         if (Screen.hasShiftDown()) {
             list.add(Component.translatable("wizardry_delight.press_shift2").withStyle(ChatFormatting.DARK_GRAY));
-            list.add(Component.translatable("wizardry_delight.rose_murderer").withStyle(ChatFormatting.GOLD));
-            list.add(Component.translatable("wizardry_delight.rose_murderer2").withStyle(ChatFormatting.GOLD));
+            list.add(Component.translatable("wizardry_delight.rose_murderer").withStyle(ChatFormatting.DARK_PURPLE));
+            list.add(Component.translatable("wizardry_delight.rose_murderer2").withStyle(ChatFormatting.DARK_PURPLE));
         }
         else {
             list.add(Component.translatable("wizardry_delight.press_shift").withStyle(ChatFormatting.DARK_GRAY));

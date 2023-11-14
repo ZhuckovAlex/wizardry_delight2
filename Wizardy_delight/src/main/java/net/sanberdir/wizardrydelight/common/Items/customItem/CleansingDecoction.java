@@ -59,7 +59,7 @@ public class CleansingDecoction extends Item {
         super.appendHoverText(itemstack, world, list, flag);
 if (Screen.hasShiftDown()) {
     list.add(Component.translatable("wizardry_delight.press_shift2").withStyle(ChatFormatting.DARK_GRAY));
-    list.add(Component.translatable("wizardry_delight.cleansing_decoction").withStyle(ChatFormatting.GOLD));
+    list.add(Component.translatable("wizardry_delight.cleansing_decoction").withStyle(ChatFormatting.DARK_PURPLE));
 }
 else {
     list.add(Component.translatable("wizardry_delight.press_shift").withStyle(ChatFormatting.DARK_GRAY));
