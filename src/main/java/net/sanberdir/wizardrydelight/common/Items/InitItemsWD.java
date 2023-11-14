@@ -135,13 +135,13 @@ public class InitItemsWD {
                     .food(new FoodProperties.Builder().nutrition(10).saturationMod(0.2f).alwaysEat().fast()
                             .effect(new MobEffectInstance(MobEffects.INVISIBILITY, 9600, 0), 1F)
                             .effect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 0), 1F)
+                            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 4800, 0), 1F)
                             .build())));
 
     public static final RegistryObject<Item> LEVITAN_JAM = ITEMS.register("levitan_jam",
             () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES)
                     .food(new FoodProperties.Builder().nutrition(20).saturationMod(0.5f).alwaysEat().fast()
                             .effect(new MobEffectInstance(MobEffects.SLOW_FALLING, 400, 0), 1F)
-                            .effect(new MobEffectInstance(MobEffects.JUMP, 400, 1), 1F)
                             .effect(new MobEffectInstance(MobEffects.LEVITATION, 180, 5), 1F)
                             .build())));
     public static final RegistryObject<Item> CHEESE = ITEMS.register("cheese",
