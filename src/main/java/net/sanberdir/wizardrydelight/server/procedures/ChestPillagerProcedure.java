@@ -51,8 +51,8 @@ public class ChestPillagerProcedure {
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
-                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.5)) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.IRON_INGOT,2));
+                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.05)) {
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.EMERALD,2));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
@@ -72,8 +72,8 @@ public class ChestPillagerProcedure {
                     _level.addFreshEntity(entityToSpawn);
                 }
             } else if (Math.random() < 0.30) {
-                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.45)) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.IRON_INGOT,4));
+                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.05)) {
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.EMERALD,4));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
