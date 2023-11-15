@@ -57,10 +57,6 @@ public class HatArmorItem extends GeoArmorItem implements IAnimatable {
         return super.isPiglinCurrency(stack);
     }
 
-    @Override
-    public boolean isEnderMask(ItemStack stack, Player player, EnderMan endermanEntity) {
-        return true;
-    }
 
     @Override
     public void registerControllers(AnimationData data) {
