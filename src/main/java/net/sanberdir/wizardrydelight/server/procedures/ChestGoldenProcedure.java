@@ -92,7 +92,7 @@ public class ChestGoldenProcedure {
                     _level.addFreshEntity(entityToSpawn);
                 }
                 if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.05)) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.CHEESE.get(),3));
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.A_DROP_OF_LOVE.get(),3));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
@@ -109,7 +109,7 @@ public class ChestGoldenProcedure {
                 }
             } else {
                 if (world instanceof Level _level && !_level.isClientSide()) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.IRON_INGOT, 5));
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.GOLD_INGOT, 5));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
