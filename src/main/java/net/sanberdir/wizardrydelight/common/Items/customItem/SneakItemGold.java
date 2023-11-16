@@ -24,7 +24,7 @@ public class SneakItemGold extends Item{
         double y = entity.getY();
         double z = entity.getZ();
 
-        ChestGoldenProcedure.execute(entity);
+
         return ar;
     }
 
