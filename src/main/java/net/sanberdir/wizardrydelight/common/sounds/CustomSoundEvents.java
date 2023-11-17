@@ -19,7 +19,7 @@ public class CustomSoundEvents {
     public static final RegistryObject<SoundEvent> NYAMNYAM_END =
             registerSoundEvent("nyamnyam_end");
 
-    //Суанчес-сан-санбердир продакшнс представляет вам средство от кровавых натоптышей всего за 2000 рублей! Только сегодня успейте заказать два тюбика по цене трех.
+
     public static final RegistryObject<SoundEvent> WIZARDRY_DELIGHT_JAM =
             registerSoundEvent("wizardry_delight_jam");
     public static final RegistryObject<SoundEvent> NECRO_DECAY_EFFECT_FINISH =
