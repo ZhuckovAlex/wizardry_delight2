@@ -1,7 +1,12 @@
 package net.sanberdir.wizardrydelight.common.blocks.customBlocks;
 
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,6 +20,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.sanberdir.wizardrydelight.WizardryDelight;
+
+import java.util.Iterator;
 
 public class Orhidea extends Block implements net.minecraftforge.common.IPlantable {
 
@@ -34,7 +42,7 @@ public class Orhidea extends Block implements net.minecraftforge.common.IPlantab
         if (blockstate.is(this)) {
             return false;
         } else {
-            if (blockstate.is(Blocks.END_STONE)) {
+            if (blockstate.is(Blocks.END_STONE)||blockstate.is(BlockTags.BASE_STONE_OVERWORLD)) {
                 BlockPos blockpos = p_57177_.below();
 
                 return true;
@@ -59,6 +67,17 @@ public class Orhidea extends Block implements net.minecraftforge.common.IPlantab
     }
     public void entityInside(BlockState p_58238_, Level p_58239_, BlockPos p_58240_, Entity p_58241_) {
         if (!p_58239_.isClientSide ) {
+            if (p_58241_ instanceof ServerPlayer _player) {
+                Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("wizardry_delight:adventures/step_a_orchid"));
+                AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
+                if (!_ap.isDone()) {
+                    Iterator _iterator = _ap.getRemainingCriteria().iterator();
+                    while (_iterator.hasNext())
+                        _player.getAdvancements().award(_adv, (String) _iterator.next());
+                }
+            }
+
+
 
             if (p_58241_ instanceof LivingEntity) {
                 LivingEntity livingentity = (LivingEntity)p_58241_;
