@@ -29,6 +29,7 @@ public class FeatherChickenRenderer extends GeoEntityRenderer<FeatherChicken> {
                                     ResourceLocation textureLocation) {
         if (animatable.isBaby()){
             stack.scale(0.5f, 0.5f, 0.5f);
+
         }
         else {
             stack.scale(1f, 1f, 1f);
