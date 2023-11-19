@@ -60,8 +60,7 @@ public class InitItemsWD {
                     .effect(new MobEffectInstance(ModEffects.COMFORT.get(), 900, 0), 1F)
                     .build())));
     public static final RegistryObject<Item> HOT_COCOA_WITH_SPARKING_POLLEN = ITEMS.register("hot_cocoa_with_sparkling_pollen",
-            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(8).saturationMod(0.5f)
-                    .effect(new MobEffectInstance(MobEffects.REGENERATION, 80, 3), 1F)
+            () -> new SparkingCocoaItem(new Item.Properties().tab(ModCreativeTab.BUSHES).stacksTo(16).food(new FoodProperties.Builder().nutrition(8).saturationMod(0.5f)
                     .build())));
     public static final RegistryObject<Item> APPLE_JAM = ITEMS.register("apple_jam",
             () -> new JamMod(new Item.Properties().tab(ModCreativeTab.BUSHES).food(new FoodProperties.Builder().nutrition(9).saturationMod(0.7f)
