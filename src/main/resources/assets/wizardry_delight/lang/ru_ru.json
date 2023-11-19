@@ -91,8 +91,8 @@
   "item.wizardry_delight.cocked_goats_meat": "Тушенная козлятина",
   "item.wizardry_delight.frog_body": "Лягушачья тушка",
   "item.wizardry_delight.cocked_frog": "Жареная лягушка",
-  "item.wizardry_delight.frog_legs": "Лягущачьи лапки",
-  "item.wizardry_delight.cocked_frog_legs": "Готовые лягушачьи лапки",
+  "item.wizardry_delight.frog_legs": "Лягушачьи лапки",
+  "item.wizardry_delight.cocked_frog_legs": "Жареные лягушачьи лапки",
   "item.wizardry_delight.cocked_horse": "Копчёная конина",
   "item.wizardry_delight.cocked_mushroom_on_stick": "Жареные грибы на палочке",
   "item.wizardry_delight.cocked_shpikachki": "Жаренные шпикачи",
@@ -168,8 +168,8 @@
   "item.wizardry_delight.wizard_pie": "§eТорт волшебника",
   "itemGroup.wizardry_delight": "Wizardry delight",
 
-  "wizardry_delight.press_shift": "Нажмите на [§7Shift§8], чтобы увидеть описание",
-  "wizardry_delight.press_shift2": "Нажмите на [§fShift§8], чтобы увидеть описание",
+  "wizardry_delight.press_shift": "Удерживайте [§7Shift§8], чтобы увидеть описание",
+  "wizardry_delight.press_shift2": "Удерживайте [§fShift§8], чтобы увидеть описание",
 
   "wizardry_delight.progress_kebab": "§aЕще маринуется, надо подождать...",
   "wizardry_delight.result_kebab": "§aПромаринован",
