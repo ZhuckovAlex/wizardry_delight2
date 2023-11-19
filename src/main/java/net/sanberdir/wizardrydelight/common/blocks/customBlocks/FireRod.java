@@ -1,12 +1,17 @@
 package net.sanberdir.wizardrydelight.common.blocks.customBlocks;
 
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -21,6 +26,8 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import java.util.Iterator;
 
 public class FireRod extends Block implements net.minecraftforge.common.IPlantable {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
@@ -127,6 +134,18 @@ public class FireRod extends Block implements net.minecraftforge.common.IPlantab
             if (p_49263_.getRemainingFireTicks() == 0) {
                 p_49263_.setSecondsOnFire(8);
             }
+        }
+        if (!p_49261_.isClientSide ) {
+            if (p_49263_ instanceof ServerPlayer _player) {
+                Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("wizardry_delight:adventures/step_a_orchid"));
+                AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
+                if (!_ap.isDone()) {
+                    Iterator _iterator = _ap.getRemainingCriteria().iterator();
+                    while (_iterator.hasNext())
+                        _player.getAdvancements().award(_adv, (String) _iterator.next());
+                }
+            }
+
         }
 
         p_49263_.hurt(DamageSource.IN_FIRE, this.fireDamage);
