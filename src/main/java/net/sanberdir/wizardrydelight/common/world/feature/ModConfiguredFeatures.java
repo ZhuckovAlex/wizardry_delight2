@@ -77,7 +77,7 @@ public class ModConfiguredFeatures {
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> ROSE_OF_GHOSTY_TEARS = CONFIGURED_FEATURES.register("rose_of_ghosty_tears",
             () -> new ConfiguredFeature<>(Feature.FLOWER,
-                    new RandomPatchConfiguration(3, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                    new RandomPatchConfiguration(1, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                             new SimpleBlockConfiguration(BlockStateProvider.simple(InitBlocksWD.ROSE_OF_GHOSTY_TEARS.get()))))));
     public static final RegistryObject<ConfiguredFeature<?, ?>> ROSE_OF_THE_MURDERER = CONFIGURED_FEATURES.register("rose_of_murderer",
             () -> new ConfiguredFeature<>(Feature.FLOWER,
