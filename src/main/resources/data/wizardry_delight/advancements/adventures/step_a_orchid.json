@@ -28,7 +28,7 @@
       "translate": "advancements.adventures.spatial_orchid.description"
     },
     "frame": "challenge",
-    "hidden": false,
+    "hidden": true,
     "icon": {
       "item": "wizardry_delight:spatial_orchid"
     },
