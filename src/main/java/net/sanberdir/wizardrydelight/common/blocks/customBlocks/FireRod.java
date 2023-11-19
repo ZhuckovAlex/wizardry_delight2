@@ -10,6 +10,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
@@ -134,6 +136,10 @@ public class FireRod extends Block implements net.minecraftforge.common.IPlantab
             if (p_49263_.getRemainingFireTicks() == 0) {
                 p_49263_.setSecondsOnFire(8);
             }
+        }if (p_49263_ instanceof LivingEntity) {
+            LivingEntity livingentity = (LivingEntity)p_49263_;
+            livingentity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20,3));
+            livingentity.hurt(new DamageSource("magic").bypassArmor(), 4);
         }
         if (!p_49261_.isClientSide ) {
             if (p_49263_ instanceof ServerPlayer _player) {
