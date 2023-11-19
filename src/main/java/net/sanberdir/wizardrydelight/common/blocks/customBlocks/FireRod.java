@@ -137,7 +137,7 @@ public class FireRod extends Block implements net.minecraftforge.common.IPlantab
         }
         if (!p_49261_.isClientSide ) {
             if (p_49263_ instanceof ServerPlayer _player) {
-                Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("wizardry_delight:adventures/step_a_orchid"));
+                Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("wizardry_delight:adventures/fire_stem"));
                 AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
                 if (!_ap.isDone()) {
                     Iterator _iterator = _ap.getRemainingCriteria().iterator();
@@ -145,7 +145,6 @@ public class FireRod extends Block implements net.minecraftforge.common.IPlantab
                         _player.getAdvancements().award(_adv, (String) _iterator.next());
                 }
             }
-
         }
 
         p_49263_.hurt(DamageSource.IN_FIRE, this.fireDamage);
