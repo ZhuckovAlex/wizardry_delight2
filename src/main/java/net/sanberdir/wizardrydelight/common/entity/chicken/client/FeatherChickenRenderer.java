@@ -28,7 +28,7 @@ public class FeatherChickenRenderer extends GeoEntityRenderer<FeatherChicken> {
                                     @Nullable VertexConsumer vertexBuilder, int packedLightIn,
                                     ResourceLocation textureLocation) {
         if (animatable.isBaby()){
-            stack.scale(0.4f, 0.4f, 0.4f);
+            stack.scale(0.5f, 0.5f, 0.5f);
         }
         else {
             stack.scale(1f, 1f, 1f);
