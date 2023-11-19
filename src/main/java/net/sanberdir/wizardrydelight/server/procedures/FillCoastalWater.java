@@ -13,11 +13,6 @@ public class FillCoastalWater {
     public static void execute(LevelAccessor world, double x, double y, double z) {
 
         if (Math.random() <= 0.01) {
-        if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == Blocks.WATER || (world.getBlockState(new BlockPos(x + 1, y - 1, z))).getBlock() == Blocks.WATER || (world.getBlockState(new BlockPos(x - 1, y - 1, z))).getBlock() == Blocks.WATER
-                || (world.getBlockState(new BlockPos(x, y - 1, z + 1))).getBlock() == Blocks.WATER || (world.getBlockState(new BlockPos(x, y - 1, z - 1))).getBlock() == Blocks.WATER
-                || (world.getBlockState(new BlockPos(x + 1, y - 1, z + 1))).getBlock() == Blocks.WATER || (world.getBlockState(new BlockPos(x - 1, y - 1, z - 1))).getBlock() == Blocks.WATER
-                || (world.getBlockState(new BlockPos(x - 1, y - 1, z + 1))).getBlock() == Blocks.WATER || (world.getBlockState(new BlockPos(x + 1, y - 1, z - 1))).getBlock() == Blocks.WATER) {
-            {
                 BlockPos _bp = new BlockPos(x, y, z);
                 BlockState _bs = InitBlocksWD.COASTAL_STEEP_W.get().defaultBlockState();
                 BlockState _bso = world.getBlockState(_bp);
@@ -33,6 +28,3 @@ public class FillCoastalWater {
             }
         }
     }
-}
-
-}
