@@ -313,6 +313,12 @@ public class InitItemsWD {
     public static final RegistryObject<Item> HUNTING_TWISTER = ITEMS.register("hunting_twister",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build())));
+    public static final RegistryObject<Item> FROG_BODY = ITEMS.register("frog_body",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(1).saturationMod(0.5F).build())));
+    public static final RegistryObject<Item> COCKED_FROG_BODY = ITEMS.register("cocked_frog",
+            () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
+                    .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build())));
     public static final RegistryObject<Item> PEPPER = ITEMS.register("pepper",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.BUSHES)
                     .food(new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build())));
