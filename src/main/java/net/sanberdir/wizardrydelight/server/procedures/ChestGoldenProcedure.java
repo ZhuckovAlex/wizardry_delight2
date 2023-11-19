@@ -65,11 +65,6 @@ public class ChestGoldenProcedure {
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
-                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.30)) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.PUMPKIN_PIE,4));
-                    entityToSpawn.setPickUpDelay(10);
-                    _level.addFreshEntity(entityToSpawn);
-                }
                 if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.4)) {
                     ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.CHEESE.get(),3));
                     entityToSpawn.setPickUpDelay(10);
