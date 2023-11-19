@@ -16,14 +16,14 @@ public class CurioGoldenRuno {
         if (entity instanceof LivingEntity lv) {
             CuriosApi.getCuriosHelper().findCurios(lv, InitItemsWD.GOLDEN_RUNO.get()).forEach(item -> {
                 ItemStack itemstackiterator = item.stack();
-                if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MobEffects.POISON) : false) {
-                    if (entity instanceof LivingEntity _entity)
-                        _entity.removeEffect(MobEffects.POISON);
-                }
-                if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MobEffects.WITHER) : false) {
-                    if (entity instanceof LivingEntity _entity)
-                        _entity.removeEffect(MobEffects.WITHER);
-                }
+//                if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MobEffects.POISON) : false) {
+//                    if (entity instanceof LivingEntity _entity)
+//                        _entity.removeEffect(MobEffects.POISON);
+//                }
+//                if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MobEffects.WITHER) : false) {
+//                    if (entity instanceof LivingEntity _entity)
+//                        _entity.removeEffect(MobEffects.WITHER);
+//                }
                 if ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) < 6) {
                     if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
                         _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 3, false, false));
