@@ -54,7 +54,7 @@
 				},
 				{
 					"name": "lhorn2",
-					"parent": "bone",
+					"parent": "head",
 					"pivot": [-5, 18.5, -12]
 				},
 				{
