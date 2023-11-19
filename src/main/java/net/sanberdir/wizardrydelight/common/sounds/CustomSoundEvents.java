@@ -18,8 +18,6 @@ public class CustomSoundEvents {
             registerSoundEvent("robin_stick");
     public static final RegistryObject<SoundEvent> NYAMNYAM_END =
             registerSoundEvent("nyamnyam_end");
-
-
     public static final RegistryObject<SoundEvent> WIZARDRY_DELIGHT_JAM =
             registerSoundEvent("wizardry_delight_jam");
     public static final RegistryObject<SoundEvent> NECRO_DECAY_EFFECT_FINISH =
