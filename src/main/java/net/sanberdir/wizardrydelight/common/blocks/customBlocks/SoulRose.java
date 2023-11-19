@@ -12,32 +12,21 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class SoulRose extends Block implements net.minecraftforge.common.IPlantable {
+public class SoulRose extends BushBlock implements net.minecraftforge.common.IPlantable {
 
 
     public SoulRose(Properties p_49795_) {
         super(p_49795_);
     }
 
-    public boolean canSurvive(BlockState p_57175_, LevelReader p_57176_, BlockPos p_57177_) {
-        BlockState soil = p_57176_.getBlockState(p_57177_.below());
-
-        BlockState blockstate = p_57176_.getBlockState(p_57177_.below());
-        if (blockstate.is(this)) {
-            return false;
-        } else {
-            if (blockstate.is(Blocks.SOUL_SAND)|| blockstate.is(Blocks.SOUL_SOIL)) {
-                BlockPos blockpos = p_57177_.below();
-
-                return true;
-            }
-            return false;
-        }
+    protected boolean mayPlaceOn(BlockState p_51042_, BlockGetter p_51043_, BlockPos p_51044_) {
+        return p_51042_.is(Blocks.SOUL_SOIL)|| p_51042_.is(Blocks.SOUL_SAND);
     }
     @Override
     public net.minecraftforge.common.PlantType getPlantType(BlockGetter world, BlockPos pos) {
