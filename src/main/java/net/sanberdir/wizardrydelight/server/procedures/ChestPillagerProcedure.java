@@ -40,7 +40,7 @@ public class ChestPillagerProcedure {
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
-            } else if (Math.random() < 0.25) {
+            } else if (Math.random() < 0.23) {
                 if (world instanceof Level _level && !_level.isClientSide()) {
                     ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.BONE,4));
                     entityToSpawn.setPickUpDelay(10);
@@ -51,12 +51,12 @@ public class ChestPillagerProcedure {
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
-                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.5)) {
+                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.7)) {
                     ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.IRON_INGOT,2));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
-                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.5)) {
+                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.7)) {
                     ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.IRON_INGOT,3));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
@@ -72,7 +72,7 @@ public class ChestPillagerProcedure {
                     _level.addFreshEntity(entityToSpawn);
                 }
             } else if (Math.random() < 0.30) {
-                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.45)) {
+                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.6)) {
                     ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.IRON_INGOT,4));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);

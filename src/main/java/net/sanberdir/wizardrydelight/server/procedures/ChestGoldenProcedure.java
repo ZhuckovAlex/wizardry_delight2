@@ -60,7 +60,7 @@ public class ChestGoldenProcedure {
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
-                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.5)) {
+                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.7)) {
                     ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.EMERALD,3));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
@@ -70,7 +70,7 @@ public class ChestGoldenProcedure {
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
-                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.1)) {
+                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.4)) {
                     ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.CHEESE.get(),3));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
@@ -87,18 +87,18 @@ public class ChestGoldenProcedure {
                     _level.addFreshEntity(entityToSpawn);
                 }
                 if (world instanceof Level _level && !_level.isClientSide()) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.IRON_BLOCK,5));
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Items.EXPERIENCE_BOTTLE));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
-                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.05)) {
+                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.6)) {
                     ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.A_DROP_OF_LOVE.get(),3));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
             } else if (Math.random() < 0.15) {
-                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.30)) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.CHEESE.get(),3));
+                if ((world instanceof Level _level && !_level.isClientSide())&&(Math.random() < 0.6)) {
+                    ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(InitItemsWD.CHEESE.get(),1));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
