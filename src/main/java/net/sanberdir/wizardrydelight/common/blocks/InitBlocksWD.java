@@ -67,7 +67,7 @@ public class InitBlocksWD {
     public static final RegistryObject<Block> DRAGOLIT_GRID = registerBlockWithoutBlockItem("dragolit_grid",
             () -> new DracolitBarsBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).strength(2.5F).noOcclusion()));
     public static final RegistryObject<Block> DRAGOLIT_BLOCK = registerBlockWithoutBlockItem("dragolit_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).strength(5).noOcclusion()));
+            () -> new DracolitBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).strength(5).noOcclusion()));
 
     public static final RegistryObject<Block> STRANGE_SHIP = registerBlock("strange_chip",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops()
