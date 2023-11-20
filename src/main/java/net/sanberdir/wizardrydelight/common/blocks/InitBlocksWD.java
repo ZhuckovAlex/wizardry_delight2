@@ -65,7 +65,7 @@ public class InitBlocksWD {
     public static final RegistryObject<Block> POTTED_MEADOW_GOLDEN_FLOWER = registerBlockWithoutBlockItem("potted_meadow_golden_flower",
             () -> new FlowerPotBlock(MEADOW_GOLDEN_FLOWER.get(),BlockBehaviour.Properties.of(Material.PLANT).instabreak().sound(SoundType.STONE)));
     public static final RegistryObject<Block> DRAGOLIT_GRID = registerBlockWithoutBlockItem("dragolit_grid",
-            () -> new IronBarsBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).strength(2.5F).noOcclusion()));
+            () -> new DracolitBarsBlock(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).strength(2.5F).noOcclusion()));
     public static final RegistryObject<Block> DRAGOLIT_BLOCK = registerBlockWithoutBlockItem("dragolit_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).strength(5).noOcclusion()));
 
