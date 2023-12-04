@@ -29,6 +29,8 @@ public class InitItemsWD {
             () -> new EggMottled(new Item.Properties().tab(ModCreativeTab.BUSHES).stacksTo(16)));
     public static final RegistryObject<Item> RING_RESERVATION_LIFE = ITEMS.register("ring_reservation_life",
             () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeTab.BUSHES)));
+    public static final RegistryObject<Item> FLAME_ARROW = ITEMS.register("flame_arrow",
+            () -> new FlameArrowItem(new Item.Properties().tab(ModCreativeTab.BUSHES)));
     public static final RegistryObject<Item> RING_RESERVATION_LIFE_CHARGED = ITEMS.register("ring_reservation_life_charged",
             () -> new Item(new Item.Properties().durability(3)));
     public static final RegistryObject<Item> SOUL_CORE = ITEMS.register("soul_core",

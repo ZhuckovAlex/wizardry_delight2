@@ -15,32 +15,33 @@ public class KrutnevyBread extends Item {
     public KrutnevyBread(Properties p_41383_) {
         super(p_41383_);
     }
-    public static void execute(Entity entity) {
+    public static void eatenBread(Entity entity) {
         if (entity == null)
             return;
-        if (entity instanceof LivingEntity _entity)
+        if (entity instanceof LivingEntity _entity) {
             _entity.removeEffect(MobEffects.BAD_OMEN);
-        if (entity instanceof LivingEntity _entity)
             _entity.removeEffect(MobEffects.DARKNESS);
-        if (entity instanceof LivingEntity _entity)
             _entity.removeEffect(MobEffects.HUNGER);
-        if (entity instanceof LivingEntity _entity)
             _entity.removeEffect(MobEffects.WITHER);
-        if (entity instanceof LivingEntity _entity)
             _entity.removeEffect(MobEffects.POISON);
-        if (entity instanceof LivingEntity _entity)
             _entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
-        if (entity instanceof LivingEntity _entity)
             _entity.removeEffect(MobEffects.UNLUCK);
-        if (entity instanceof LivingEntity _entity)
             _entity.removeEffect(MobEffects.WEAKNESS);
+        }
+
+        if (entity instanceof Player _player) {
+            _player.getFoodData().setFoodLevel((int) ((entity instanceof Player _plr ? _plr.getFoodData().getFoodLevel() : 0) + 8));
+            _player.getFoodData().setSaturation((float) ((entity instanceof Player _plr ? _plr.getFoodData().getSaturationLevel() : 0) + 5));
+
+        }
+
     }
 
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
         if (!level.isClientSide) {
             // FORGE - move up so stack.shrink does not turn stack into air
 
-            execute(livingEntity);
+            eatenBread(livingEntity);
 
             if (livingEntity instanceof ServerPlayer serverplayer) {
                 CriteriaTriggers.CONSUME_ITEM.trigger(serverplayer, itemStack);
