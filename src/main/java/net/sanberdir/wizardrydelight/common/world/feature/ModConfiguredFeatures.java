@@ -38,10 +38,10 @@ public class ModConfiguredFeatures {
             () -> new ConfiguredFeature<>(Feature.FLOWER,
                     new RandomPatchConfiguration(10, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                             new SimpleBlockConfiguration(BlockStateProvider.simple(InitBlocksWD.CHARMING_BERRIES_BLOCK.get()))))));
-    public static final RegistryObject<ConfiguredFeature<?, ?>> FREEZE_BERRIES = CONFIGURED_FEATURES.register("freeze_berries",
-            () -> new ConfiguredFeature<>(Feature.FLOWER,
-                    new RandomPatchConfiguration(12, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-                            new SimpleBlockConfiguration(BlockStateProvider.simple(InitBlocksWD.FREEZE_BERRIES.get()))))));
+//    public static final RegistryObject<ConfiguredFeature<?, ?>> FREEZE_BERRIES = CONFIGURED_FEATURES.register("freeze_berries",
+//            () -> new ConfiguredFeature<>(Feature.FLOWER,
+//                    new RandomPatchConfiguration(12, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+//                            new SimpleBlockConfiguration(BlockStateProvider.simple(InitBlocksWD.FREEZE_BERRIES.get()))))));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> POISON_BERRY = CONFIGURED_FEATURES.register("poison_berry",
             () -> new ConfiguredFeature<>(Feature.FLOWER,

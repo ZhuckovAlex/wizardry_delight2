@@ -7,7 +7,7 @@
   },
   "ingredients": [
     {
-      "tag": "forge:warts"
+      "item": "wizardry_delight:warped_wart"
     },
     {
       "item": "wizardry_delight:warped_wart"
