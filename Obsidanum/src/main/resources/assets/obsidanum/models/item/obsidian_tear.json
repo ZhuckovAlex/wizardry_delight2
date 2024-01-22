@@ -1,3 +1,6 @@
 {
-  "parent": "obsidanum:block/obsidian_tear"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "obsidanum:item/obsidian_tear"
+  }
 }
