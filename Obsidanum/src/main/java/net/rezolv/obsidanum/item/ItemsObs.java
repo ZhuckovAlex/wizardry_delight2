@@ -1,12 +1,11 @@
-package net.rezolv.obsidanum;
+package net.rezolv.obsidanum.item;
 
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.RecordItem;
-import net.minecraftforge.eventbus.EventBus;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.rezolv.obsidanum.Obsidanum;
 
 public class ItemsObs {
     public static final DeferredRegister<Item> ITEMS =

@@ -1,8 +1,6 @@
 package net.rezolv.obsidanum;
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.CreativeModeTabRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -12,6 +10,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.rezolv.obsidanum.block.BlocksObs;
+import net.rezolv.obsidanum.item.ItemsObs;
+import net.rezolv.obsidanum.tab.CreativeTabObs;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -26,6 +27,7 @@ public class Obsidanum {
         modEventBus.addListener(this::commonSetup);
 
         ItemsObs.register(modEventBus);
+        BlocksObs.register(modEventBus);
         CreativeTabObs.register(modEventBus);
 
 

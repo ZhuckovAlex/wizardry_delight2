@@ -1,13 +1,15 @@
-package net.rezolv.obsidanum;
+package net.rezolv.obsidanum.tab;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+import net.rezolv.obsidanum.Obsidanum;
+import net.rezolv.obsidanum.block.BlocksObs;
+import net.rezolv.obsidanum.item.ItemsObs;
 
 public class CreativeTabObs extends CreativeModeTab {
 
@@ -23,6 +25,8 @@ public class CreativeTabObs extends CreativeModeTab {
                     .displayItems((pParameters, pOutput) -> {
 
                         pOutput.accept(ItemsObs.OBSIDIAN_TEAR.get());
+
+                        pOutput.accept(BlocksObs.OBSIDAN_PLANKS.get());
                     })
                     .build());
 
