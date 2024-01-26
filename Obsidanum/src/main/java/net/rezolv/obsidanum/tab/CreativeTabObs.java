@@ -25,6 +25,8 @@ public class CreativeTabObs extends CreativeModeTab {
                     .displayItems((pParameters, pOutput) -> {
 
                         pOutput.accept(ItemsObs.OBSIDIAN_TEAR.get());
+                        pOutput.accept(ItemsObs.OBSIDAN.get());
+                        pOutput.accept(ItemsObs.OBSIDAN_APPLE.get());
 
                         pOutput.accept(BlocksObs.OBSIDAN_PLANKS.get());
                     })
