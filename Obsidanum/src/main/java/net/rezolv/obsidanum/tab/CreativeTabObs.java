@@ -29,6 +29,7 @@ public class CreativeTabObs extends CreativeModeTab {
                         pOutput.accept(ItemsObs.OBSIDAN_APPLE.get());
 
                         pOutput.accept(BlocksObs.OBSIDAN_PLANKS.get());
+                        pOutput.accept(BlocksObs.OBSIDAN_PLANKS_STAIRS.get());
                     })
                     .build());
 
