@@ -33,6 +33,9 @@ public class BlocksObs {
             () -> new StairBlock(() -> BlocksObs.OBSIDAN_PLANKS.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(Blocks.CHERRY_PLANKS).sound(SoundType.CHERRY_WOOD)));
 
+    public static final RegistryObject<Block> OBSIDAN_PLANKS_SLAB = registerBlock("obsidan_planks_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_PLANKS).sound(SoundType.CHERRY_WOOD)));
+
 
 
     //Метод регистрации блоков

@@ -23,13 +23,14 @@ public class CreativeTabObs extends CreativeModeTab {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ItemsObs.OBSIDIAN_TEAR.get()))
                     .title(Component.translatable("creativetab.obsidanum"))
                     .displayItems((pParameters, pOutput) -> {
-
+                        //Items
                         pOutput.accept(ItemsObs.OBSIDIAN_TEAR.get());
                         pOutput.accept(ItemsObs.OBSIDAN.get());
                         pOutput.accept(ItemsObs.OBSIDAN_APPLE.get());
-
+                        //Blocks
                         pOutput.accept(BlocksObs.OBSIDAN_PLANKS.get());
                         pOutput.accept(BlocksObs.OBSIDAN_PLANKS_STAIRS.get());
+                        pOutput.accept(BlocksObs.OBSIDAN_PLANKS_SLAB.get());
                     })
                     .build());
 
