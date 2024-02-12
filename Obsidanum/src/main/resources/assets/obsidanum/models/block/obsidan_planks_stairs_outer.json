@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "obsidanum:block/obsidan_planks",
-    "side": "obsidanum:block/obsidan_planks",
-    "top": "obsidanum:block/obsidan_planks"
-  }
-}
